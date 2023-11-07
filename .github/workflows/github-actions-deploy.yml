@@ -1,0 +1,71 @@
+name: Deploy
+run-name: Deploy
+on:
+  push:
+    branches:
+      - master
+env:
+  SERVICE_NAME: minsie
+  AWS_REGION: ap-northeast-2
+  ECS_CLUSTER: develop-minsie
+  REPO: 970400790549.dkr.ecr.ap-northeast-2.amazonaws.com/minsie
+  TASK_DEFINITION: task-definition.json
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: login ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          mask-password: 'true'
+
+      - name: docker build and push
+        run: |
+          docker pull ${{ env.REPO }}:latest || true
+          docker build --cache-from ${{ env.REPO }}:latest -t ${{ env.REPO }}:latest -f ./Dockerfile .
+          docker push ${{ env.REPO }}:latest
+
+  Deploy:
+    runs-on: ubuntu-latest
+    environment: alpha
+    needs: Build
+    steps:
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: download current task definition
+        run: |
+          sudo apt-get -y install jq
+          CURRENT_TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition minsie --query taskDefinition)
+          echo $CURRENT_TASK_DEFINITION | jq 'del(.taskDefinitionArn) | del(.revision) | del(.status) | del(.requiresAttributes) | del(.compatibilities) | del(.registeredAt) | del(.registeredBy)' > ${{ env.TASK_DEFINITION }}
+
+      - name: create new task definition
+        id: task-definition
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.TASK_DEFINITION }}
+          container-name: ${{ env.SERVICE_NAME }}
+          image: '${{ env.REPO }}:latest'
+
+      - name: deploy
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-definition.outputs.task-definition }}
+          service: ${{ env.SERVICE_NAME }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true

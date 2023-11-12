@@ -10,7 +10,7 @@ export const fadeInUp = css`
     opacity: 1;
   }
   transition-property: transform, opacity;
-  transition-duration: 0.5s;
+  transition-duration: 1s;
   transition-timing-function: ease-in;
   transform: translateY(50px);
   opacity: 0;

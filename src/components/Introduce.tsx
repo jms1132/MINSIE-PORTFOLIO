@@ -6,7 +6,7 @@ import { styled } from 'styled-components';
 
 let isPreloaded = false;
 
-const Section1 = (): ReactElement => {
+const Introduce = (): ReactElement => {
   const targetRef = useRef<HTMLDivElement>(null);
   const animateRef = useRef<HTMLDivElement>(null);
 
@@ -47,8 +47,8 @@ const Section1 = (): ReactElement => {
   }, []);
 
   return (
-    <DIV_Section1 className="section1" ref={targetRef}>
-      <div className={`contents`}>
+    <DIV_Introduce className="introduce" ref={targetRef}>
+      <div className={`contents content-max`}>
         <div className="title">
           <div>안녕하세요.</div>
           <div>3년차 프론트엔드 개발자</div>
@@ -67,12 +67,12 @@ const Section1 = (): ReactElement => {
           </div>
         </div>
       </div>
-    </DIV_Section1>
+    </DIV_Introduce>
   );
 };
 
-const DIV_Section1 = styled.div`
-  &.section1 {
+const DIV_Introduce = styled.div`
+  &.introduce {
     background: linear-gradient(
         180deg,
         rgba(112, 93, 80, 0.8) 0,
@@ -117,7 +117,7 @@ const DIV_Section1 = styled.div`
         div:nth-child(3n) {
           font-size: 80px;
           color: #ffffff;
-          font-weight: 800;
+          ${Theme.Typography.extraBold};
         }
         span {
           color: #fe9a2e;
@@ -138,4 +138,4 @@ const DIV_Section1 = styled.div`
     }
   }
 `;
-export default Section1;
+export default Introduce;

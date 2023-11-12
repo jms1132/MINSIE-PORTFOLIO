@@ -24,7 +24,6 @@ const HEADER_Layout = styled.header<StyledProps>`
   top: 0;
   right: 0;
   left: 0;
-  background-color: transparent;
   z-index: 10;
 
   ${({ styles }) => styles}

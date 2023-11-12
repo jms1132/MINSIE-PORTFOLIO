@@ -56,9 +56,13 @@ const Color = {
 };
 
 const Typography = {
+  /** 700 */ extraBold: 'font-weight: 800;',
   /** 700 */ bold: 'font-weight: 700;',
   /** 500 */ medium: 'font-weight: 500;',
   /** 400 */ regular: 'font-weight: 400;',
+
+  fontHeading: 'font-family: Open Sans, GmarketSansBold, sans-serif;',
+  fontContents: 'font-family: Open Sans, GmarketSansMedium, sans-serif;',
 
   /** 40px */ heading: `
     font-size: 70px;
@@ -66,7 +70,7 @@ const Typography = {
     letter-spacing: -0.5px;`,
   /** 40px */ title: `
       font-size: 40px;
-      line-height: 80px;
+      line-height: 45px;
       letter-spacing: -0.5px;`,
   /** 32px */ h1: `
       font-size: 32px;

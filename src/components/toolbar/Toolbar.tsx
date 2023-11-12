@@ -1,11 +1,27 @@
-import styled from 'styled-components';
+import { Theme } from '@/style/Theme';
+import { useEffect, useState } from 'react';
+import { styled } from 'styled-components';
 interface ToolbarProps {
   mobileColored: boolean;
 }
 const Toolbar = (props: ToolbarProps) => {
+  const [scrollY, setScrollY] = useState<number>(0);
+
+  const updateScroll = () => {
+    setScrollY(window.scrollY || document.documentElement.scrollTop);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+  }, []);
+
   return (
-    <DIV_Toolbar>
-      <div className={`toolbar-row ${props.mobileColored ? 'm-colored' : ''}`}>
+    <DIV_Toolbar className={`${scrollY > 80 ? 'scroll' : ''}`}>
+      <div
+        className={`content-max toolbar-row ${
+          props.mobileColored ? 'm-colored' : ''
+        } `}
+      >
         <div className="toolbar-title">MINSIE.</div>
         <div className="toolbar-menu">
           <div>소개</div>
@@ -21,19 +37,25 @@ const Toolbar = (props: ToolbarProps) => {
 const DIV_Toolbar = styled.div`
   box-sizing: border-box;
   width: 100%;
-  padding: 30px 60px;
+  padding: 20px 0;
   margin: 0 auto;
+  color: hsla(0, 0%, 100%, 0.7);
+
+  &.scroll {
+    background-color: #ffffff;
+    color: #000000;
+  }
 
   .toolbar-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: hsla(0, 0%, 100%, 0.7);
+
     .toolbar-title {
       cursor: pointer;
-      font-family: 'Open Sans, GmarketSansBold, sans-serif';
-      font-weight: 700;
-      font-size: 40px;
+      ${Theme.Typography.fontHeading};
+      ${Theme.Typography.h1};
+      ${Theme.Typography.bold};
     }
     .toolbar-menu {
       display: flex;

@@ -6,27 +6,17 @@ import styled from 'styled-components';
 interface SkillType {
   name: string;
   icon: string;
+  level: number;
   text: string;
 }
 interface SkillGraphProps {
   skill: SkillType;
+  idx: number;
   start: boolean;
 }
 const SkillGraph = (props: SkillGraphProps): ReactElement => {
-  const random = (length = 8) => {
-    const chars =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let str = '';
-
-    for (let i = 0; i < length; i++) {
-      str += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-
-    return str;
-  };
-
   return (
-    <DIV_SkillGraph>
+    <DIV_SkillGraph idx={props.idx + 1} level={props.skill.level}>
       <img src={props.skill.icon} />
       <div className="bar-part">
         <div className="skill-name">{props.skill.name}</div>
@@ -37,13 +27,18 @@ const SkillGraph = (props: SkillGraphProps): ReactElement => {
             }`}
           ></div>
         </div>
-        <div className="text">{random(100)}</div>
+        <div className="text">{props.skill.text}</div>
       </div>
     </DIV_SkillGraph>
   );
 };
 
-const DIV_SkillGraph = styled.div`
+interface StyledSkillGraphProps {
+  idx: number;
+  level: number;
+}
+
+const DIV_SkillGraph = styled.div<StyledSkillGraphProps>`
   display: flex;
   gap: 20px;
   img {
@@ -57,12 +52,16 @@ const DIV_SkillGraph = styled.div`
     gap: 15px;
     .skill-name {
       ${Theme.Typography.subtitle1};
-      ${Theme.Typography.bold};
+      ${Theme.Typography.extraBold};
+      ${Theme.Typography.fontHeading};
     }
     .text {
       width: 100%;
+      ${Theme.Typography.body1};
+      ${Theme.Typography.regular};
+
       white-space: pre-line;
-      word-break: break-all;
+      word-break: keep-all;
     }
     .graph {
       background: #e2e8f0;
@@ -78,8 +77,8 @@ const DIV_SkillGraph = styled.div`
         top: 0px;
         bottom: 0px;
         width: 0;
-        transition: width 0.75s;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
         &.active {
           background: #495fef;
           position: absolute;
@@ -88,69 +87,9 @@ const DIV_SkillGraph = styled.div`
           bottom: 0px;
           transition-delay: 0s;
           transition-property: width;
-          transition-timing-function: var(
-            --chakra-transition-easing-ease-in-out
-          );
-          &.HTML {
-            width: 90%;
-            transition-duration: 0.25s;
-          }
-          &.CSS {
-            width: 90%;
-            transition-duration: 0.5s;
-          }
-          &.JAVASCRIPT {
-            width: 80%;
-            transition-duration: 0.75s;
-          }
-          &.JQUERY {
-            width: 70%;
-            transition-duration: 0.75s;
-          }
-          &.REACT {
-            width: 80%;
-            transition-duration: 1s;
-          }
-          &.REDUX {
-            width: 60%;
-            transition-duration: 1.25s;
-          }
-          &.TYPESCRIPT {
-            width: 60%;
-            transition-duration: 1.5s;
-          }
-          &.STORYBOOK {
-            width: 50%;
-            transition-duration: 1.75s;
-          }
-          &.GIT {
-            width: 80%;
-            transition-duration: 2s;
-          }
-          &.GITHUB {
-            width: 80%;
-            transition-duration: 2.25s;
-          }
-          &.BITBUCKET {
-            width: 80%;
-            transition-duration: 2.5s;
-          }
-          &.JIRA {
-            width: 80%;
-            transition-duration: 2.75s;
-          }
-          &.ZEPLIN {
-            width: 50%;
-            transition-duration: 3s;
-          }
-          &.FIGMA {
-            width: 70%;
-            transition-duration: 3.25s;
-          }
-          &.POSTMAN {
-            width: 50%;
-            transition-duration: 3.5s;
-          }
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: ${({ idx }) => `${idx * 0.25}s`};
+          width: ${({ level }) => `${level}%`};
         }
       }
     }

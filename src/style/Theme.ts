@@ -85,15 +85,15 @@ const Typography = {
       line-height: 44px;
       letter-spacing: -0.5px;`,
   /** 18px */ subtitle1: `
-      font-size: 18px;
+      font-size: 20px;
       line-height: 26px;
       letter-spacing: -0.5px;`,
   /** 16px */ subtitle2: `
-      font-size: 16px;
+      font-size: 18px;
       line-height: 24px;
       letter-spacing: -0.5px;`,
   /** 15px */ subtitle3: `
-      font-size: 15px;
+      font-size: 16px;
       line-height: 23px;
       letter-spacing: -0.5px;`,
   /** 14px */ body1: `

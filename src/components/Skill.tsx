@@ -13,7 +13,6 @@ const Skill = (): ReactElement => {
   });
 
   useEffect(() => {
-    // 예를 들어
     if (inView) setProgressStart(true);
   }, [inView]);
 
@@ -23,7 +22,12 @@ const Skill = (): ReactElement => {
       <DIV_GraphPart>
         <div className="graph-part">
           {skillArray.map((skill, idx) => (
-            <SkillGraph start={progressStart} key={idx} skill={skill} />
+            <SkillGraph
+              start={progressStart}
+              key={idx}
+              skill={skill}
+              idx={idx}
+            />
           ))}
         </div>
       </DIV_GraphPart>

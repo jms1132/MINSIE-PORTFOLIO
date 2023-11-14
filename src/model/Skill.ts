@@ -1,4 +1,4 @@
-export const skillArray = [
+export const frontSkillArray = [
   {
     name: 'HTML',
     icon: './images/html-logo.png',
@@ -22,12 +22,6 @@ export const skillArray = [
     icon: './images/jquery-logo.png',
     level: 70,
     text: '실무에서 활용해본 경험이 있으며 효율적인 DOM조작법을 알고 있습니다.',
-  },
-  {
-    name: 'PHP',
-    icon: './images/php-logo.png',
-    level: 50,
-    text: '진행 중이었던 프로젝트를 react 라이브러리를 이용해 새롭게 마이그레이션하기 전, php 언어를 이용하여 직접 백엔드 작업을 진행하였습니다.',
   },
   {
     name: 'REACT',
@@ -59,12 +53,9 @@ export const skillArray = [
     level: 50,
     text: 'StoryBook을 통한 컴포넌트 리스트업 및 비쥬얼 테스팅 경험이 많으며, 디자인 시스템 구축 경험이 있습니다.',
   },
-  {
-    name: 'SQL',
-    icon: './images/sql-logo.svg',
-    level: 70,
-    text: '데이터베이스 구조와 sql 문법에 대해 이해하고 있으며 query문을 통해 데이터베이스 및 테이블 관리에 익숙합니다. 기본적인 SELECT, INSERT, UPDATE, DELETE문을 포함해 데이터 조회를 위한 JOIN문이나 다양한 필터들을 구현하여 데이터를 다룰수 있습니다.',
-  },
+];
+
+export const versionControlSkillArray = [
   {
     name: 'GIT',
     icon: './images/git-logo.png',
@@ -83,6 +74,9 @@ export const skillArray = [
     level: 80,
     text: 'BitBucket을 통해 협업하며 자동 배포, pipline을 이용해 보았습니다.',
   },
+];
+
+export const communicationArray = [
   {
     name: 'JIRA',
     icon: './images/jira-logo.jpeg',
@@ -100,6 +94,21 @@ export const skillArray = [
     icon: './images/figma-logo.png',
     level: 70,
     text: '서비스 기획 단계에서부터 함께 참여하며 Figma를 통해 기획서를 전달받고 작업을 진행한 경험이 있으며 디자인 시스템 구축을 위해 디자이너들과 Figma를 통해 실시간 소통하였습니다. ',
+  },
+];
+
+export const etcSkillArray = [
+  {
+    name: 'PHP',
+    icon: './images/php-logo.png',
+    level: 50,
+    text: '진행 중이었던 프로젝트를 react 라이브러리를 이용해 새롭게 마이그레이션하기 전, php 언어를 이용하여 직접 백엔드 개발을 진행하였습니다.',
+  },
+  {
+    name: 'SQL',
+    icon: './images/sql-logo.svg',
+    level: 70,
+    text: '데이터베이스 구조와 sql 문법에 대해 이해하고 있으며 query문을 통해 데이터베이스 및 테이블 관리에 익숙합니다. 기본적인 SELECT, INSERT, UPDATE, DELETE문을 포함해 데이터 조회를 위한 JOIN문이나 다양한 필터들을 구현하여 데이터를 다룰수 있습니다.',
   },
   {
     name: 'POSTMAN',

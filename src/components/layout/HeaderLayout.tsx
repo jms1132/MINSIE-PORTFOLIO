@@ -1,4 +1,4 @@
-import { StyledProps } from '@/style/Styled';
+import { StyledProps } from '@/style/common.style';
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 
 import styled from 'styled-components';

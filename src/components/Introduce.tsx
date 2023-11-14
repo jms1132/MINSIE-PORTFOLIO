@@ -1,6 +1,7 @@
 import useOnView from '@/hooks/useOnView';
-import { fadeInUp } from '@/style/Styled';
+
 import { Theme } from '@/style/Theme';
+import { fadeInUp } from '@/style/common.style';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 

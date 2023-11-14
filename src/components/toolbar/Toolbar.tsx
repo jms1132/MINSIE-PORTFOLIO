@@ -1,6 +1,7 @@
 import { Theme } from '@/style/Theme';
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
+import Link from '../common/Link';
 interface ToolbarProps {
   mobileColored: boolean;
 }
@@ -22,12 +23,14 @@ const Toolbar = (props: ToolbarProps) => {
           props.mobileColored ? 'm-colored' : ''
         } `}
       >
-        <div className="toolbar-title">MINSIE.</div>
+        <Link href="/" className="toolbar-title">
+          MINSIE.
+        </Link>
         <div className="toolbar-menu">
-          <div>소개</div>
-          <div>기술스택</div>
-          <div>포트폴리오</div>
-          <div>연락처</div>
+          <Link href="/">소개</Link>
+          <Link href="#skill">기술스택</Link>
+          <Link href="#portfolio">포트폴리오</Link>
+          <Link href="#contact">연락처</Link>
         </div>
       </div>
     </DIV_Toolbar>
@@ -40,9 +43,12 @@ const DIV_Toolbar = styled.div`
   padding: 20px 0;
   margin: 0 auto;
   color: hsla(0, 0%, 100%, 0.7);
+  transition: box-shadow 0.25s ease;
 
   &.scroll {
     background-color: #ffffff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+
     color: #000000;
   }
 

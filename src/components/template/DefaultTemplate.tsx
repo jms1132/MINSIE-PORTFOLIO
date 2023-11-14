@@ -1,8 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
-import Toolbar from '../toolbar/Toolbar';
 import HeaderLayout from '../layout/HeaderLayout';
-
-
+import Toolbar from '../toolbar/Toolbar';
 
 interface StyledDefaultTemplateContentProps {
   contentBackgroundColor?: string;
@@ -18,9 +16,7 @@ export interface DefaultTemplateProps
 }
 
 const DefaultTemplate = (props: DefaultTemplateProps): ReactElement => {
-  const header = props.hideHeader ? null : (
-    <Toolbar mobileColored={false} />
-  );
+  const header = props.hideHeader ? null : <Toolbar mobileColored={false} />;
 
   return <HeaderLayout header={header}>{props.children}</HeaderLayout>;
 };

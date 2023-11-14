@@ -11,6 +11,7 @@ const Home = (): ReactElement => {
       <DefaultTemplate>
         <Introduce />
         <Skill />
+        <Skill />
       </DefaultTemplate>
     </MAIN_Home>
   );

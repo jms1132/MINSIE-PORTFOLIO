@@ -80,7 +80,6 @@ const DIV_SkillGraph = styled.div<StyledSkillGraphProps>`
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
         &.active {
-          background: #495fef;
           position: absolute;
           left: 0px;
           top: 0px;

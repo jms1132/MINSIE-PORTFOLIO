@@ -41,6 +41,7 @@ const Link = (props: LinkProps): ReactElement => {
     if (props.target === '_blank') {
       return;
     }
+
     if (props.href) {
       if (isReactRouter) {
         props.replace

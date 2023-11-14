@@ -1,4 +1,4 @@
-export const frontSkillArray = [
+export const frontendSkillArray = [
   {
     name: 'HTML',
     icon: './images/html-logo.png',
@@ -10,6 +10,12 @@ export const frontSkillArray = [
     icon: './images/css-logo.png',
     level: 90,
     text: '크로스 브라우징을 위한 스타일링 방법을 알고 있고, 구형 브라우저 지원을 위한 도구(Webpack)을 이용해 보았습니다.',
+  },
+  {
+    name: 'STYLED-COMPONENTS',
+    icon: './images/styled-components-logo.png',
+    level: 70,
+    text: 'Styled-components를 통해 스타일 모듈화를 구현하며 CSS-in-JS 기법을 사용해보았습니다.',
   },
   {
     name: 'JAVASCRIPT',

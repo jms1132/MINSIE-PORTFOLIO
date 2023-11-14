@@ -1,5 +1,6 @@
 import { Theme } from '@/style/Theme';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { styled } from 'styled-components';
 import Link from '../common/Link';
 interface ToolbarProps {
@@ -7,14 +8,25 @@ interface ToolbarProps {
 }
 const Toolbar = (props: ToolbarProps) => {
   const [scrollY, setScrollY] = useState<number>(0);
-
+  const navigate = useNavigate();
   const updateScroll = () => {
     setScrollY(window.scrollY || document.documentElement.scrollTop);
   };
 
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('scroll', updateScroll);
+    };
+  }, [scrollY]);
+
+  const moveScroll = (position: number) => {
+    navigate('/');
+    window.scrollTo({
+      top: position,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <DIV_Toolbar className={`${scrollY > 80 ? 'scroll' : ''}`}>
@@ -27,10 +39,10 @@ const Toolbar = (props: ToolbarProps) => {
           MINSIE.
         </Link>
         <div className="toolbar-menu">
-          <Link href="/">소개</Link>
+          <Link onClick={() => moveScroll(0)}>소개</Link>
           <Link href="#skill">기술스택</Link>
           <Link href="#portfolio">포트폴리오</Link>
-          <Link href="#contact">연락처</Link>
+          <Link href="#contact">CONTACT</Link>
         </div>
       </div>
     </DIV_Toolbar>
@@ -48,7 +60,6 @@ const DIV_Toolbar = styled.div`
   &.scroll {
     background-color: #ffffff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-
     color: #000000;
   }
 
@@ -71,6 +82,9 @@ const DIV_Toolbar = styled.div`
         cursor: pointer;
         &:hover {
           opacity: 0.7;
+        }
+        &:last-child {
+          ${Theme.Typography.extraBold};
         }
       }
     }

@@ -1,4 +1,6 @@
+import Contact from '@/components/Contact';
 import Introduce from '@/components/Introduce';
+import Portfolio from '@/components/Portfolio';
 import Skill from '@/components/Skill';
 import DefaultTemplate from '@/components/template/DefaultTemplate';
 import { Theme } from '@/style/Theme';
@@ -11,7 +13,8 @@ const Home = (): ReactElement => {
       <DefaultTemplate>
         <Introduce />
         <Skill />
-        <Skill />
+        <Portfolio />
+        <Contact />
       </DefaultTemplate>
     </MAIN_Home>
   );
@@ -19,7 +22,7 @@ const Home = (): ReactElement => {
 
 const MAIN_Home = styled.main`
   .section {
-    padding: 100px 0;
+    padding: 150px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +32,7 @@ const MAIN_Home = styled.main`
       ${Theme.Typography.extraBold};
       ${Theme.Typography.fontHeading};
 
-      padding-bottom: 80px;
+      padding-bottom: 100px;
       position: relative;
       width: fit-content;
       &::after {

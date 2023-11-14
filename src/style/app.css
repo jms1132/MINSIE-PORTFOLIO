@@ -1,8 +1,20 @@
 @charset "utf-8";
 @font-face {
+  font-family: 'GmarketSansLight';
+  src: url(./fonts/GmarketSansTTFLight.ttf) format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
   font-family: 'GmarketSansMedium';
   src: url(./fonts/GmarketSansTTFMedium.ttf) format('truetype');
-  font-weight: normal;
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GmarketSansBold';
+  src: url(./fonts/GmarketSansTTFBold.ttf) format('truetype');
+  font-weight: 700;
   font-style: normal;
 }
 @font-face {
@@ -17,6 +29,13 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'SeoulHangangEB';
+  src: url(./fonts/SeoulHangangEB.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body,
 div,

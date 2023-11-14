@@ -63,6 +63,7 @@ const Typography = {
 
   fontHeading: 'font-family: Open Sans, GmarketSansBold, sans-serif;',
   fontContents: 'font-family: Open Sans, GmarketSansMedium, sans-serif;',
+  fontSub: 'font-family: Open Sans, GmarketSansLight, sans-serif;',
 
   /** 40px */ heading: `
     font-size: 70px;

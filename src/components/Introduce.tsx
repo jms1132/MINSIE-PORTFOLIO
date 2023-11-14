@@ -81,7 +81,7 @@ const DIV_Introduce = styled.div`
       ),
       url('./images/main-bg.jpg') 50% no-repeat;
     background-size: cover;
-    padding: 170px 0 100px;
+    padding: 170px 0 150px;
 
     .contents {
       display: flex;

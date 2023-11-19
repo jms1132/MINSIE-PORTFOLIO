@@ -77,7 +77,6 @@ const A_Link = styled.a<StyledProps>`
     &:hover {
       opacity: 1;
     }
-    cursor: initial;
   }
   ${({ styles }) => styles}
 `;

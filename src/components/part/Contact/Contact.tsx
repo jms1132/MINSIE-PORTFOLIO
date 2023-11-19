@@ -1,13 +1,26 @@
+import useOnView from '@/hooks/useOnView';
 import { contactArray } from '@/model/Contact';
 import { Theme } from '@/style/Theme';
 import { ReactElement, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import ContactCard from './ContactCard';
 
 const Contact = (): ReactElement => {
   const params = useParams();
+  const navigate = useNavigate();
+
   const contactRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const targetOnView = useOnView({
+    target: contentRef,
+  });
+
+  useEffect(() => {
+    if (targetOnView) {
+      navigate('#contact');
+    }
+  }, [targetOnView, navigate]);
 
   useEffect(() => {
     if (window.location.hash.includes('contact')) {
@@ -16,9 +29,9 @@ const Contact = (): ReactElement => {
   }, [params]);
 
   return (
-    <DIV_Contact ref={contactRef} className="section content-max">
+    <DIV_ContactWrap ref={contactRef} className="section content-max">
       <div className="section-title">연락처</div>
-      <DIV_TextSection>
+      <DIV_ContentSection ref={contentRef}>
         <div className="question">
           "사용자를 위한 서비스 개발이란 무엇일까?"
         </div>
@@ -46,19 +59,19 @@ const Contact = (): ReactElement => {
             이끌어 주실 회사를 찾고 있습니다.
           </p>
         </div>
-      </DIV_TextSection>
+      </DIV_ContentSection>
       <DIV_CardSection>
         {contactArray.map((info, idx) => (
           <ContactCard key={idx} info={info} />
         ))}
       </DIV_CardSection>
-    </DIV_Contact>
+    </DIV_ContactWrap>
   );
 };
 
-const DIV_Contact = styled.div``;
+const DIV_ContactWrap = styled.div``;
 
-const DIV_TextSection = styled.div`
+const DIV_ContentSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -112,7 +125,6 @@ const DIV_CardSection = styled.div`
   justify-content: space-between;
   width: 100%;
   > div {
-   
     &:nth-child(2),
     &:nth-child(3) {
       .content {

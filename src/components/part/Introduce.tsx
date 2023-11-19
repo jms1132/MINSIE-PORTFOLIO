@@ -3,13 +3,16 @@ import useOnView from '@/hooks/useOnView';
 import { Theme } from '@/style/Theme';
 import { fadeInUp } from '@/style/common.style';
 import { ReactElement, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 let isPreloaded = false;
 
 const Introduce = (): ReactElement => {
+  const navigate = useNavigate();
   const targetRef = useRef<HTMLDivElement>(null);
   const animateRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const [showSuspended, setShowSuspended] = useState(false);
   const animateOnView = useOnView({
@@ -31,6 +34,10 @@ const Introduce = (): ReactElement => {
     isPreloaded = true;
   }
 
+  const targetOnView = useOnView({
+    target: contentRef,
+  });
+
   useEffect(() => {
     if (isPreloaded) {
       return;
@@ -47,9 +54,15 @@ const Introduce = (): ReactElement => {
     }, Number(10000));
   }, []);
 
+  useEffect(() => {
+    if (targetOnView) {
+      navigate('/');
+    }
+  }, [targetOnView, navigate]);
+
   return (
-    <DIV_Introduce className="introduce" ref={targetRef}>
-      <div className={`contents content-max`}>
+    <DIV_IntroduceWrap className="introduce" ref={targetRef}>
+      <DIV_ContentSection className="content-max" ref={contentRef}>
         <div className="title">
           <div>안녕하세요.</div>
           <div>3년차 프론트엔드 개발자</div>
@@ -67,12 +80,12 @@ const Introduce = (): ReactElement => {
             그리고 협업이 강점인 개발자입니다.
           </div>
         </div>
-      </div>
-    </DIV_Introduce>
+      </DIV_ContentSection>
+    </DIV_IntroduceWrap>
   );
 };
 
-const DIV_Introduce = styled.div`
+const DIV_IntroduceWrap = styled.div`
   &.introduce {
     background: linear-gradient(
         180deg,
@@ -82,60 +95,59 @@ const DIV_Introduce = styled.div`
       url('./images/main-bg.jpg') 50% no-repeat;
     background-size: cover;
     padding: 170px 0 150px;
+  }
+`;
+const DIV_ContentSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 
-    .contents {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
+  .divider {
+    width: 60px;
+    height: 0;
+    margin: 90px auto 50px;
+    border: none;
+    border-top: 3px solid #fe9a2e;
+    opacity: 1;
+  }
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-      .divider {
-        width: 60px;
-        height: 0;
-        margin: 90px auto 50px;
-        border: none;
-        border-top: 3px solid #fe9a2e;
-        opacity: 1;
-      }
-      .title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    color: #000000;
+    div:first-child {
+      padding-bottom: 80px;
+      font-size: 30px;
+      color: hsla(0, 0%, 100%, 0.7);
+    }
+    div:nth-child(2n) {
+      padding-bottom: 30px;
+      font-size: 40px;
+      color: hsla(0, 0%, 100%, 0.7);
+    }
+    div:nth-child(3n) {
+      font-size: 80px;
+      color: #ffffff;
+      ${Theme.Typography.extraBold};
+    }
+    span {
+      color: #fe9a2e;
+    }
+  }
+  .sub-title {
+    color: hsla(0, 0%, 100%, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
-        color: #000000;
-        div:first-child {
-          padding-bottom: 80px;
-          font-size: 30px;
-          color: hsla(0, 0%, 100%, 0.7);
-        }
-        div:nth-child(2n) {
-          padding-bottom: 30px;
-          font-size: 40px;
-          color: hsla(0, 0%, 100%, 0.7);
-        }
-        div:nth-child(3n) {
-          font-size: 80px;
-          color: #ffffff;
-          ${Theme.Typography.extraBold};
-        }
-        span {
-          color: #fe9a2e;
-        }
-      }
-      .sub-title {
-        color: hsla(0, 0%, 100%, 0.75);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-
-        ${Theme.Typography.h3};
-        > div {
-          ${fadeInUp};
-        }
-      }
+    ${Theme.Typography.h3};
+    > div {
+      ${fadeInUp};
     }
   }
 `;

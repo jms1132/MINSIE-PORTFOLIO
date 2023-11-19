@@ -3,7 +3,7 @@ import { Theme } from '@/style/Theme';
 import { ReactElement, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
-import ContactCard from './part/ContactCard';
+import ContactCard from './ContactCard';
 
 const Contact = (): ReactElement => {
   const params = useParams();
@@ -18,7 +18,7 @@ const Contact = (): ReactElement => {
   return (
     <DIV_Contact ref={contactRef} className="section content-max">
       <div className="section-title">연락처</div>
-      <DIV_Footer>
+      <DIV_TextSection>
         <div className="question">
           "사용자를 위한 서비스 개발이란 무엇일까?"
         </div>
@@ -46,7 +46,7 @@ const Contact = (): ReactElement => {
             이끌어 주실 회사를 찾고 있습니다.
           </p>
         </div>
-      </DIV_Footer>
+      </DIV_TextSection>
       <DIV_CardSection>
         {contactArray.map((info, idx) => (
           <ContactCard key={idx} info={info} />
@@ -58,7 +58,7 @@ const Contact = (): ReactElement => {
 
 const DIV_Contact = styled.div``;
 
-const DIV_Footer = styled.div`
+const DIV_TextSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -112,16 +112,7 @@ const DIV_CardSection = styled.div`
   justify-content: space-between;
   width: 100%;
   > div {
-    transition-property: box-shadow, transform;
-    transition-duration: 0.25s;
-    transition-timing-function: ease-in-out;
-    cursor: default;
-    @media (hover: hover) {
-      &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 8px 24px #fe9a2e;
-      }
-    }
+   
     &:nth-child(2),
     &:nth-child(3) {
       .content {

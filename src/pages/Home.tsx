@@ -1,7 +1,7 @@
-import Contact from '@/components/Contact';
-import Introduce from '@/components/Introduce';
-import Portfolio from '@/components/Portfolio';
-import Skill from '@/components/Skill';
+import Contact from '@/components/part/Contact/Contact';
+import Introduce from '@/components/part/Introduce';
+import Portfolio from '@/components/part/Portfolio';
+import Skill from '@/components/part/Skill/Skill';
 import DefaultTemplate from '@/components/template/DefaultTemplate';
 import { Theme } from '@/style/Theme';
 import { ReactElement } from 'react';

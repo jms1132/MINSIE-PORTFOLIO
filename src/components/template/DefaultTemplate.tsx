@@ -1,4 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
+import Footer from '../footer/Footer';
+import FooterLayout from '../layout/FooterLayout';
 import HeaderLayout from '../layout/HeaderLayout';
 import Toolbar from '../toolbar/Toolbar';
 
@@ -17,8 +19,14 @@ export interface DefaultTemplateProps
 
 const DefaultTemplate = (props: DefaultTemplateProps): ReactElement => {
   const header = props.hideHeader ? null : <Toolbar mobileColored={false} />;
+  const footer = props.hideFooter ? null : <Footer />;
 
-  return <HeaderLayout header={header}>{props.children}</HeaderLayout>;
+  return (
+    <HeaderLayout header={header}>
+      {props.children}
+      <FooterLayout footer={footer} />
+    </HeaderLayout>
+  );
 };
 
 export default DefaultTemplate;

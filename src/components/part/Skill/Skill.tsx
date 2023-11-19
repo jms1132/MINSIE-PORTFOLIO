@@ -8,8 +8,8 @@ import { ReactElement, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import Tab from './common/Tab';
-import SkillGraph from './part/SkillGraph';
+import Tab from '../../common/Tab';
+import SkillGraph from './SkillGraph';
 
 const Skill = (): ReactElement => {
   const params = useParams();

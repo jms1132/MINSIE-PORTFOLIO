@@ -84,25 +84,24 @@ const DIV_ContentSection = styled.div`
   .question {
     font-family: 'GyeonggiBatang';
     font-size: 25px;
+    margin-bottom: 30px;
 
     &.animate {
+      width: 36ch;
       overflow: hidden;
       white-space: nowrap;
       border-right: 2px solid;
-      animation: typing 2.5s steps(40, end) forwards, blinking 0.75s infinite;
+      animation: typing 2s steps(30, end) forwards, blinking 0.75s infinite;
     }
   }
   .answer {
-    padding-top: 30px ${Theme.Typography.regular};
+    ${Theme.Typography.regular};
     ${Theme.Typography.subtitle2};
   }
 
   @keyframes typing {
     from {
       width: 0;
-    }
-    to {
-      width: 100%;
     }
   }
 

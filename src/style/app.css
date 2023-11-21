@@ -1,37 +1,25 @@
 @charset "utf-8";
 @font-face {
   font-family: 'GmarketSansLight';
-  src: url(./fonts/GmarketSansTTFLight.ttf);
+  src: url(./fonts/GmarketSansLight.otf) format('opentype');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'GmarketSansMedium';
-  src: url(./fonts/GmarketSansTTFMedium.ttf);
+  src: url(./fonts/GmarketSansMedium.otf) format('opentype');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'GmarketSansBold';
-  src: url(./fonts/GmarketSansTTFBold.ttf);
+  src: url(./fonts/GmarketSansBold.otf) format('opentype');
   font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'GmarketSansBold';
-  src: url(./fonts/GmarketSansTTFBold.ttf);
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Open Sans';
-  src: url(./fonts/OpenSans-VariableFont.ttf);
-  font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'SeoulHangangEB';
-  src: url(./fonts/SeoulHangangEB.ttf);
+  src: url(./fonts/SeoulHangangEB.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -122,7 +110,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  font-family: Open Sans, GmarketSansMedium, sans-serif;
+  font-family: 'Open Sans', 'GmarketSansMedium', serif;
 
   vertical-align: baseline;
 }

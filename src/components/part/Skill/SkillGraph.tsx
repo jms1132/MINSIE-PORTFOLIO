@@ -43,6 +43,7 @@ const DIV_SkillGraph = styled.div<StyledSkillGraphProps>`
   gap: 20px;
   img {
     width: 60px;
+    height: 60px;
     height: fit-content;
   }
   .bar-part {

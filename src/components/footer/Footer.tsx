@@ -23,6 +23,7 @@ const DIV_Footer = styled.div`
   color: #909497;
   img {
     width: 30px;
+    height: 30px;
   }
 `;
 export default Footer;

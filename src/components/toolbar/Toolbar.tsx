@@ -10,6 +10,7 @@ interface ToolbarProps {
 const Toolbar = (props: ToolbarProps) => {
   const [scrollY, setScrollY] = useState<number>(0);
   const dispatch = useDispatch();
+
   const updateScroll = () => {
     setScrollY(window.scrollY || document.documentElement.scrollTop);
   };

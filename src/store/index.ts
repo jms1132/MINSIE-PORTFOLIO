@@ -18,8 +18,17 @@ const rootPersistConfig = {
   stateReconciler: hardSet,
 };
 
+const pagePositionPersistConfig = {
+  key: 'pagePosition',
+  storage,
+  stateReconciler: hardSet,
+};
+
 const rootReducer = combineReducers({
-  pagePosition,
+  pagePosition: persistReducer<ReturnType<typeof pagePosition>>(
+    pagePositionPersistConfig,
+    pagePosition
+  ),
 });
 
 const persistedReducer = persistReducer<ReturnType<typeof rootReducer>>(

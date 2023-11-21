@@ -18,6 +18,7 @@ const Skill = (): ReactElement => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   useEffect(() => {
+    console.log(pagePosition);
     if (pagePosition === 'skill' && skillRef.current) {
       skillRef.current.scrollIntoView({
         behavior: 'smooth',

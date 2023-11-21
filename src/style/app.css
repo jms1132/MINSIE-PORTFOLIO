@@ -1,25 +1,37 @@
 @charset "utf-8";
 @font-face {
   font-family: 'GmarketSansLight';
-  src: url(./fonts/GmarketSansLight.otf) format('opentype');
+  src: url(./fonts/GmarketSansLight.otf) format('woff2'),
+    url(./fonts/GmarketSansLight.otf) format('woff'),
+    url(./fonts/GmarketSansLight.otf) format('truetype'),
+    url(./fonts/GmarketSansLight.otf) format('opentype');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'GmarketSansMedium';
-  src: url(./fonts/GmarketSansMedium.otf) format('opentype');
+  src: url(./fonts/GmarketSansMedium.otf) format('woff2'),
+    url(./fonts/GmarketSansMedium.otf) format('woff'),
+    url(./fonts/GmarketSansMedium.otf) format('truetype'),
+    url(./fonts/GmarketSansMedium.otf) format('opentype');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'GmarketSansBold';
-  src: url(./fonts/GmarketSansBold.otf) format('opentype');
+  src: url(./fonts/GmarketSansBold.otf) format('woff2'),
+    url(./fonts/GmarketSansBold.otf) format('woff'),
+    url(./fonts/GmarketSansBold.otf) format('truetype'),
+    url(./fonts/GmarketSansBold.otf) format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: 'SeoulHangangEB';
-  src: url(./fonts/SeoulHangangEB.ttf) format('truetype');
+  src: url(./fonts/SeoulHangangEB.ttf) format('woff2'),
+    url(./fonts/SeoulHangangEB.ttf) format('woff'),
+    url(./fonts/SeoulHangangEB.ttf) format('opentype'),
+    url(./fonts/SeoulHangangEB.ttf) format('truetype');
   font-weight: normal;
   font-style: normal;
 }

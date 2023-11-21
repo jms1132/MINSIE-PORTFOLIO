@@ -55,10 +55,8 @@ const DIV_ContactCard = styled.div`
     gap: 10px;
     .title {
       font-size: 18px;
-      ${Theme.Typography.fontSub}
     }
     .content {
-      ${Theme.Typography.fontContents};
       ${Theme.Typography.subtitle1};
     }
   }

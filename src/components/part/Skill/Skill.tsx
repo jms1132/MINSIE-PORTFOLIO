@@ -1,45 +1,34 @@
-import useOnView from '@/hooks/useOnView';
 import {
   communicationArray,
   etcSkillArray,
   frontendSkillArray,
   versionControlSkillArray,
 } from '@/model/Skill';
+import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Tab from '../../common/Tab';
 import SkillGraph from './SkillGraph';
 
 const Skill = (): ReactElement => {
-  const params = useParams();
-  const navigate = useNavigate();
+  const pagePosition = usePagePositionSelector();
   const skillRef = useRef<HTMLDivElement | null>(null);
-
   const [progressStart, setProgressStart] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  useEffect(() => {
+    if (pagePosition === 'skill' && skillRef.current) {
+      skillRef.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  }, [pagePosition]);
 
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true, // 기본 : false
   });
-
-  const targetOnView = useOnView({
-    target: skillRef,
-  });
-
-  useEffect(() => {
-    if (targetOnView) {
-      navigate('#skill');
-    }
-  }, [targetOnView, navigate]);
-
-  useEffect(() => {
-    if (window.location.hash.includes('skill')) {
-      skillRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [params]);
 
   useEffect(() => {
     if (inView) setProgressStart(true);

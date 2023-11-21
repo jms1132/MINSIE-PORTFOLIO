@@ -1,6 +1,7 @@
+import { setPagePosition } from '@/store/pagePosition/PagePosition';
 import { Theme } from '@/style/Theme';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 import { styled } from 'styled-components';
 import Link from '../common/Link';
 interface ToolbarProps {
@@ -8,9 +9,7 @@ interface ToolbarProps {
 }
 const Toolbar = (props: ToolbarProps) => {
   const [scrollY, setScrollY] = useState<number>(0);
-  const navigate = useNavigate();
-
-  const hash = window.location.hash;
+  const dispatch = useDispatch();
   const updateScroll = () => {
     setScrollY(window.scrollY || document.documentElement.scrollTop);
   };
@@ -23,21 +22,8 @@ const Toolbar = (props: ToolbarProps) => {
     };
   }, [scrollY]);
 
-  const moveScroll = (position: number) => {
-    navigate('/');
-    window.scrollTo({
-      top: position,
-      behavior: 'smooth',
-    });
-  };
-
-  // const findSelected = useMemo(()=> {}, [])
-
-  const findSelected = (value: string): boolean => {
-    if (hash.includes(value)) {
-      return true;
-    }
-    return false;
+  const movePagePosition = (page: string) => {
+    dispatch(setPagePosition(page));
   };
 
   return (
@@ -51,30 +37,10 @@ const Toolbar = (props: ToolbarProps) => {
           MINSIE.
         </Link>
         <div className="toolbar-menu">
-          <Link
-            onClick={() => moveScroll(0)}
-            className={hash === '' ? 'selected' : ''}
-          >
-            소개
-          </Link>
-          <Link
-            href="#skill"
-            className={findSelected('skill') ? 'selected' : ''}
-          >
-            기술스택
-          </Link>
-          <Link
-            href="#portfolio"
-            className={findSelected('portfolio') ? 'selected' : ''}
-          >
-            포트폴리오
-          </Link>
-          <Link
-            href="#contact"
-            className={findSelected('contact') ? 'selected' : ''}
-          >
-            CONTACT
-          </Link>
+          <Link onClick={() => movePagePosition('introduce')}>소개</Link>
+          <Link onClick={() => movePagePosition('skill')}>기술스택</Link>
+          <Link onClick={() => movePagePosition('portfolio')}>포트폴리오</Link>
+          <Link onClick={() => movePagePosition('contact')}>CONTACT</Link>
         </div>
       </div>
     </DIV_Toolbar>
@@ -114,9 +80,9 @@ const DIV_Toolbar = styled.div`
         &:last-child {
           ${Theme.Typography.extraBold};
         }
-      }
-      .selected {
-        color: #fe9a2e;
+        &:hover {
+          color: #fe9a2e;
+        }
       }
     }
   }

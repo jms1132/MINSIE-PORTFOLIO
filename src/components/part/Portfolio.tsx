@@ -1,33 +1,23 @@
-import useOnView from '@/hooks/useOnView';
+import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { ReactElement, useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const Portfolio = (): ReactElement => {
-  const params = useParams();
-  const navigate = useNavigate();
+  const pagePosition = usePagePositionSelector();
   const portfolioRef = useRef<HTMLDivElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const targetOnView = useOnView({
-    target: contentRef,
-  });
 
   useEffect(() => {
-    if (targetOnView) {
-      navigate('#portfolio');
+    if (pagePosition === 'portfolio' && portfolioRef.current) {
+      portfolioRef.current.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
-  }, [targetOnView, navigate]);
-
-  useEffect(() => {
-    if (window.location.hash.includes('portfolio')) {
-      portfolioRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [params]);
+  }, [pagePosition]);
 
   return (
     <DIV_PortfolioWrap className="section" ref={portfolioRef}>
       <div className="section-title">포트폴리오</div>
-      <DIV_ContentSection ref={contentRef}></DIV_ContentSection>
+      <DIV_ContentSection></DIV_ContentSection>
     </DIV_PortfolioWrap>
   );
 };

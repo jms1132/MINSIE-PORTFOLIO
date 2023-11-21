@@ -1,46 +1,40 @@
-import useOnView from '@/hooks/useOnView';
 import { contactArray } from '@/model/Contact';
+import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
-import { ReactElement, useEffect, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { ReactElement, useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { styled } from 'styled-components';
 import ContactCard from './ContactCard';
 
 const Contact = (): ReactElement => {
-  const params = useParams();
-  const navigate = useNavigate();
-
+  const pagePosition = usePagePositionSelector();
   const contactRef = useRef<HTMLDivElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const [typeStart, setTypeStart] = useState<boolean>(false);
 
-  const animateOnView = useOnView({
-    onlyOnce: true,
-    target: contentRef,
-  });
+  useEffect(() => {
+    if (pagePosition === 'contact' && contactRef.current) {
+      contactRef.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  }, [pagePosition]);
 
-  const animate = animateOnView ? 'animate' : '';
-
-  const targetOnView = useOnView({
-    target: contentRef,
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true, // 기본 : false
   });
 
   useEffect(() => {
-    if (targetOnView) {
-      navigate('#contact');
-    }
-  }, [targetOnView, navigate]);
-
-  useEffect(() => {
-    if (window.location.hash.includes('contact')) {
-      contactRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [params]);
+    if (inView) setTypeStart(true);
+  }, [inView]);
 
   return (
-    <DIV_ContactWrap ref={contactRef} className="section content-max">
-      <div className="section-title">연락처</div>
-      <DIV_ContentSection ref={contentRef}>
-        <div className={`question ${animate}`}>
+    <DIV_ContactWrap className="section content-max" ref={contactRef}>
+      <div className="section-title" ref={ref}>
+        연락처
+      </div>
+      <DIV_ContentSection>
+        <div className={`question ${typeStart ? 'animate' : ''}`}>
           "사용자를 위한 서비스 개발이란 무엇일까?"
         </div>
         <div className="answer">

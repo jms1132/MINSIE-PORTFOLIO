@@ -1,68 +1,35 @@
-import useOnView from '@/hooks/useOnView';
-
+import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
 import { fadeInUp } from '@/style/common.style';
 import { ReactElement, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
 import { styled } from 'styled-components';
 
-let isPreloaded = false;
-
 const Introduce = (): ReactElement => {
-  const navigate = useNavigate();
-  const targetRef = useRef<HTMLDivElement>(null);
-  const animateRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const pagePosition = usePagePositionSelector();
+  const introduceRef = useRef<HTMLDivElement | null>(null);
+  const [fadeUpStart, setFadeUpStart] = useState<boolean>(false);
 
-  const [showSuspended, setShowSuspended] = useState(false);
-  const animateOnView = useOnView({
-    onlyOnce: true,
-    target: animateRef,
-  });
-
-  const animate = animateOnView ? 'animate' : '';
-
-  const onView = useOnView({
-    target: targetRef,
-    onlyOnce: true,
-    options: {
-      rootMargin: '50px',
-    },
-  });
-
-  if (onView || showSuspended) {
-    isPreloaded = true;
-  }
-
-  const targetOnView = useOnView({
-    target: contentRef,
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true, // 기본 : false
   });
 
   useEffect(() => {
-    if (isPreloaded) {
-      return;
+    if (pagePosition === 'introduce' && introduceRef.current) {
+      introduceRef.current.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
-    if (onView || showSuspended) {
-      isPreloaded = true;
-    }
-  }, [onView, showSuspended]);
+  }, [pagePosition]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setShowSuspended(true);
-      isPreloaded = true;
-    }, Number(10000));
-  }, []);
-
-  useEffect(() => {
-    if (targetOnView) {
-      navigate('/');
-    }
-  }, [targetOnView, navigate]);
+    if (inView) setFadeUpStart(true);
+  }, [inView]);
 
   return (
-    <DIV_IntroduceWrap className="introduce" ref={targetRef}>
-      <DIV_ContentSection className="content-max" ref={contentRef}>
+    <DIV_IntroduceWrap className="introduce" ref={introduceRef}>
+      <DIV_ContentSection className="content-max" ref={ref}>
         <div className="title">
           <div>안녕하세요.</div>
           <div>3년차 프론트엔드 개발자</div>
@@ -71,8 +38,8 @@ const Introduce = (): ReactElement => {
           </div>
         </div>
         <hr className="divider"></hr>
-        <div className="sub-title" ref={animateRef}>
-          <div className={`${animate}`}>
+        <div className="sub-title">
+          <div className={`${fadeUpStart ? 'animate' : ''}`}>
             생산성 있는 개발과 가독성 있는 코드를 지향합니다.
             <br />
             매우 꼼꼼한 성격, 마지막까지 확인하는 습관.

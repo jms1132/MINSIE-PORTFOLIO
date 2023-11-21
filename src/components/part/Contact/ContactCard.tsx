@@ -41,8 +41,8 @@ const DIV_ContactCard = styled.div`
   @media (hover: hover) {
     &:hover {
       transform: translateY(-10px);
-      /* box-shadow: 0px 8px 24px #fe9a2e; */
-      box-shadow: 0px 8px 24px #626567;
+      box-shadow: 0px 8px 24px #fe9a2e;
+      /* box-shadow: 0px 8px 24px #626567; */
     }
   }
   .icon {

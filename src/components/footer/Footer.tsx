@@ -20,7 +20,7 @@ const DIV_Footer = styled.div`
   justify-content: center;
   gap: 20px;
   padding: 50px 0 80px;
-  color: #909497;
+  color: #fe9a2e;
   img {
     width: 30px;
   }

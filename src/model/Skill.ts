@@ -36,7 +36,7 @@ export const frontendSkillArray = [
     text: '재사용성을 위한 컴포넌트 단위의 개발에 능숙하며 Virtual DOM, 컴포넌트 렌더링 조건에 대해 이해하고 있습니다.',
   },
   {
-    name: 'REACT-QUERY',
+    name: 'REACT-QUERY (Tanstack Query)',
     icon: './images/react-query-logo.png',
     level: 70,
     text: '데이터 Fetching, useQuery, useQueries, useMutation 등의 기본 기능들을 이해하고 caching된 데이터 사용하는데 능숙하며, 작업 중 서버 데이터와의 동기화를 구현했습니다.',
@@ -117,9 +117,33 @@ export const etcSkillArray = [
     text: '데이터베이스 구조와 sql 문법에 대해 이해하고 있으며 query문을 통해 데이터베이스 및 테이블 관리에 익숙합니다. 기본적인 SELECT, INSERT, UPDATE, DELETE문을 포함해 데이터 조회를 위한 JOIN문이나 다양한 필터들을 구현하여 데이터를 다룰수 있습니다.',
   },
   {
+    name: 'DOCKER',
+    icon: './images/docker-logo.svg',
+    level: 40,
+    text: '도커 이미지, 컨테이너에 대한 개념을 이해하고 있고 이미지로 컨테이너를 실행하여 개발 및 배포해보았습니다.',
+  },
+  {
     name: 'POSTMAN',
     icon: './images/postman-logo.svg',
     level: 50,
     text: 'Postman을 이용해 Restful API를 테스트하였고 백엔드 개발자가 구현해놓은 API문서를 보고 이해하며 협업 과정의 효율성을 향상시켰습니다.',
+  },
+  {
+    name: 'STRAPI',
+    icon: './images/strapi-logo.png',
+    level: 50,
+    text: 'strapi를 이용하여 여러 명의 팀원들과 용어 데이터를 동일한 폼으로 관리하였습니다.',
+  },
+  {
+    name: 'OPTIMIZELY',
+    icon: './images/optimizely-logo.png',
+    level: 40,
+    text: 'optimizely를 이용하여 A/B Testing을 진행해 보았습니다.',
+  },
+  {
+    name: 'LAUNCHDARKLY',
+    icon: './images/launchdarkly-logo.png',
+    level: 50,
+    text: '기능 플래그를 이용하여 코드 배포에서 기능 롤아웃을 분리하였고 개발 중인 서비스에 대한 대상 타겟을 옵션으로 설정하여 배포 이후의 상황을 개발망에서 미리 테스트 해보았습니다.',
   },
 ];

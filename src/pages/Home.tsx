@@ -30,7 +30,6 @@ const MAIN_Home = styled.main`
     .section-title {
       ${Theme.Typography.h1};
       ${Theme.Typography.extraBold};
-      ${Theme.Typography.fontHeading};
 
       padding-bottom: 100px;
       position: relative;

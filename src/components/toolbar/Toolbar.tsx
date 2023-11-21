@@ -102,7 +102,6 @@ const DIV_Toolbar = styled.div`
 
     .toolbar-title {
       cursor: pointer;
-      ${Theme.Typography.fontHeading};
       ${Theme.Typography.h1};
       ${Theme.Typography.bold};
     }

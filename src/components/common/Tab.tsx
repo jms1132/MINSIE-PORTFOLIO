@@ -30,7 +30,6 @@ const Tab = (props: TabProps): ReactElement => {
 
 const DIV_Tab = styled.div`
   display: flex;
-  ${Theme.Typography.fontHeading};
   ${Theme.Typography.subtitle2};
   ${Theme.Typography.extraBold};
   color: ${Theme.Color.gray600};

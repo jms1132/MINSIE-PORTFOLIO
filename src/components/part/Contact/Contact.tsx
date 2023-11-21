@@ -12,6 +12,14 @@ const Contact = (): ReactElement => {
 
   const contactRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
+
+  const animateOnView = useOnView({
+    onlyOnce: true,
+    target: contentRef,
+  });
+
+  const animate = animateOnView ? 'animate' : '';
+
   const targetOnView = useOnView({
     target: contentRef,
   });
@@ -32,7 +40,7 @@ const Contact = (): ReactElement => {
     <DIV_ContactWrap ref={contactRef} className="section content-max">
       <div className="section-title">연락처</div>
       <DIV_ContentSection ref={contentRef}>
-        <div className="question">
+        <div className={`question ${animate}`}>
           "사용자를 위한 서비스 개발이란 무엇일까?"
         </div>
         <div className="answer">
@@ -72,9 +80,6 @@ const Contact = (): ReactElement => {
 const DIV_ContactWrap = styled.div``;
 
 const DIV_ContentSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
   padding-bottom: 100px;
   .underline {
     background-image: linear-gradient(90deg, #95dac1, #fffd7f);
@@ -83,21 +88,21 @@ const DIV_ContentSection = styled.div`
     background-repeat: no-repeat;
   }
   .question {
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: 0.15em solid orange; /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    font-family: 'SeoulHangangEB';
+    font-family: 'GyeonggiBatang';
     font-size: 25px;
-    margin-bottom: 30px;
-    width: fit-content;
+
+    &.animate {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid;
+      animation: typing 2.5s steps(40, end) forwards, blinking 0.75s infinite;
+    }
   }
   .answer {
-    ${Theme.Typography.regular};
+    padding-top: 30px ${Theme.Typography.regular};
     ${Theme.Typography.subtitle2};
   }
 
-  /* The typing effect */
   @keyframes typing {
     from {
       width: 0;
@@ -107,14 +112,15 @@ const DIV_ContentSection = styled.div`
     }
   }
 
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from,
-    to {
-      border-color: transparent;
+  @keyframes blinking {
+    0% {
+      border-right-color: transparent;
     }
     50% {
-      border-color: orange;
+      border-right-color: orange;
+    }
+    100% {
+      border-right-color: transparent;
     }
   }
 `;

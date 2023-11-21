@@ -1,29 +1,14 @@
 @charset "utf-8";
 @font-face {
-  font-family: 'GmarketSansLight';
-  src: local('GmarketSansLight'),
-    url(./fonts/GmarketSansLight.otf) format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
   font-family: 'GmarketSansMedium';
-  src: local('GmarketSansMedium'),
-    url(./fonts/GmarketSansMedium.otf) format('opentype');
-  font-weight: 500;
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
+  font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'GmarketSansBold';
-  src: local('GmarketSansBold'),
-    url(./fonts/GmarketSansBold.otf) format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SeoulHangangEB';
-  src: url(./fonts/SeoulHangangEB.ttf) format('truetype'),
-    url(./fonts/SeoulHangangEB.otf) format('opentype');
+  font-family: 'GyeonggiBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -115,7 +100,6 @@ video {
   font-size: 100%;
   font: inherit;
   font-family: 'Open Sans', 'GmarketSansMedium', serif;
-
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */

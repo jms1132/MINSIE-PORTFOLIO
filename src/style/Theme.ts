@@ -61,10 +61,6 @@ const Typography = {
   /** 500 */ medium: 'font-weight: 500;',
   /** 400 */ regular: 'font-weight: 400;',
 
-  fontHeading: 'font-family: Open Sans, GmarketSansBold, sans-serif;',
-  fontContents: 'font-family: Open Sans, GmarketSansMedium, sans-serif;',
-  fontSub: 'font-family: Open Sans, GmarketSansLight, sans-serif;',
-
   /** 40px */ heading: `
     font-size: 70px;
     line-height: 140px;

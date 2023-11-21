@@ -54,7 +54,6 @@ const DIV_SkillGraph = styled.div<StyledSkillGraphProps>`
     .skill-name {
       ${Theme.Typography.subtitle1};
       ${Theme.Typography.extraBold};
-      ${Theme.Typography.fontHeading};
     }
     .text {
       width: 100%;

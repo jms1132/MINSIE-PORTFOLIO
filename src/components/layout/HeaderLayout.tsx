@@ -1,5 +1,5 @@
 import { StyledProps } from '@/style/StyledProps';
-import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
+import { tabletMedia } from '@/style/deviceWidth';
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 
 import styled from 'styled-components';
@@ -27,7 +27,6 @@ const HEADER_Layout = styled.header<StyledProps>`
   left: 0;
   z-index: 10;
   background-color: transparent;
-
 
   ${tabletMedia} {
   }

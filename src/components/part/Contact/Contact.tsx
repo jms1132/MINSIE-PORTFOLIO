@@ -1,6 +1,7 @@
 import { contactArray } from '@/model/Contact';
 import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
+import { tabletMedia } from '@/style/deviceWidth';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { styled } from 'styled-components';
@@ -97,6 +98,10 @@ const DIV_ContentSection = styled.div`
   .answer {
     ${Theme.Typography.regular};
     ${Theme.Typography.subtitle2};
+    word-break: keep-all;
+  }
+
+  ${tabletMedia} {
   }
 
   @keyframes typing {
@@ -119,10 +124,12 @@ const DIV_ContentSection = styled.div`
 `;
 
 const DIV_CardSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 48%);
+  justify-content: center;
+  grid-row-gap: 2rem;
+  grid-column-gap: 4%;
   > div {
     &:nth-child(2),
     &:nth-child(3) {
@@ -130,6 +137,14 @@ const DIV_CardSection = styled.div`
         font-weight: 900;
       }
     }
+  }
+
+  ${tabletMedia} {
+    grid-template-columns: repeat(1, 100%);
+    grid-row-gap: 3rem;
+  }
+  ${tabletMedia} {
+    grid-row-gap: 2rem;
   }
 `;
 export default Contact;

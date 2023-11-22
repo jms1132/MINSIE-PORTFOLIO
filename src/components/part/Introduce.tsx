@@ -1,6 +1,7 @@
 import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
 import { fadeInUp } from '@/style/common.style';
+import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { styled } from 'styled-components';
@@ -28,7 +29,7 @@ const Introduce = (): ReactElement => {
   }, [inView]);
 
   return (
-    <DIV_IntroduceWrap className="introduce" ref={introduceRef}>
+    <DIV_IntroduceWrap className="section introduce" ref={introduceRef}>
       <DIV_ContentSection className="content-max" ref={ref}>
         <div className="title">
           <div>안녕하세요.</div>
@@ -61,9 +62,22 @@ const DIV_IntroduceWrap = styled.div`
       ),
       url('./images/main-bg.jpg') 50% no-repeat;
     background-size: cover;
-    padding: 170px 0 150px;
+    padding-top: 170px;
+  }
+
+  ${tabletMedia} {
+    &.introduce {
+      padding-top: 170px !important;
+    }
+  }
+
+  ${mobileMedia} {
+    &.introduce {
+      padding-top: 150px !important;
+    }
   }
 `;
+
 const DIV_ContentSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -83,6 +97,7 @@ const DIV_ContentSection = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
     justify-content: center;
 
     color: #000000;
@@ -111,10 +126,43 @@ const DIV_ContentSection = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-
+    word-break: keep-all;
     ${Theme.Typography.h3};
     > div {
       ${fadeInUp};
+    }
+  }
+
+  ${tabletMedia} {
+    .title {
+      div:first-child {
+        font-size: 26px;
+      }
+      div:nth-child(2n) {
+        font-size: 30px;
+      }
+      div:nth-child(3n) {
+        font-size: 60px;
+      }
+    }
+    .sub-title {
+      font-size: 20px;
+    }
+  }
+  ${mobileMedia} {
+    .title {
+      div:first-child {
+        font-size: 24px;
+      }
+      div:nth-child(2n) {
+        font-size: 28px;
+      }
+      div:nth-child(3n) {
+        font-size: 50px;
+      }
+    }
+    .sub-title {
+      font-size: 20px;
     }
   }
 `;

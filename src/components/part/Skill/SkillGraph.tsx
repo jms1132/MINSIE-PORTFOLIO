@@ -44,7 +44,6 @@ const DIV_SkillGraph = styled.div<StyledSkillGraphProps>`
   img {
     width: 60px;
     height: 60px;
-    height: fit-content;
   }
   .bar-part {
     flex: 1;

@@ -27,14 +27,14 @@ const ContactCard = (props: ContactProps): ReactElement => {
 const DIV_ContactCard = styled.div`
   display: flex;
   align-items: start;
-  justify-content: center;
-  width: fit-content;
-  gap: 20px;
-  padding: 40px 50px;
+  justify-content: start;
+  gap: 8%;
+  padding: 40px 8%;
   box-shadow: rgba(149, 160, 165, 0.2) 0px 8px 24px;
   border-radius: 8px;
 
-  transition-property: box-shadow, transform;
+  transition-property: transform, opacity, box-shadow;
+
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   cursor: default;
@@ -46,8 +46,8 @@ const DIV_ContactCard = styled.div`
     }
   }
   .icon {
-    width: 32px;
-    height: 32px;
+    width: 43px;
+    height: 43px;
   }
   .info {
     display: flex;

@@ -11,10 +11,18 @@ import {
 import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 import storage from 'redux-persist/lib/storage';
 import pagePosition from './pagePosition/PagePosition';
+import device from './device/Device';
 
 const rootPersistConfig = {
   key: 'root',
   storage,
+  stateReconciler: hardSet,
+};
+
+const devicePersistConfig = {
+  key: 'device',
+  storage,
+  whitelist: ['desktopMode'],
   stateReconciler: hardSet,
 };
 
@@ -25,6 +33,10 @@ const pagePositionPersistConfig = {
 };
 
 const rootReducer = combineReducers({
+  device: persistReducer<ReturnType<typeof device>>(
+    devicePersistConfig,
+    device
+  ),
   pagePosition: persistReducer<ReturnType<typeof pagePosition>>(
     pagePositionPersistConfig,
     pagePosition

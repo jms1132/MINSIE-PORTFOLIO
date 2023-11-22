@@ -8,7 +8,8 @@
 }
 @font-face {
   font-family: 'GyeonggiBatang';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -148,8 +149,6 @@ a {
   color: inherit;
 }
 
-.content-max {
-  max-width: 1200px;
-  margin-inline-start: auto;
-  margin-inline-end: auto;
+.overflow-hidden {
+  overflow: hidden;
 }

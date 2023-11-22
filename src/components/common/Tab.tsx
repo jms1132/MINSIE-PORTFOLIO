@@ -1,9 +1,15 @@
 import { Theme } from '@/style/Theme';
 import { columnGap } from '@/style/common.style';
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { CSSProp } from 'styled-components';
 
-export interface TabProps extends HTMLAttributes<HTMLDivElement> {
+interface StyledTabProps {
+  styles?: CSSProp;
+}
+
+export interface TabProps
+  extends HTMLAttributes<HTMLDivElement>,
+    StyledTabProps {
   items: ReactNode[];
   activeIndex: number;
   itemClassName?: string;
@@ -28,7 +34,7 @@ const Tab = (props: TabProps): ReactElement => {
   );
 };
 
-const DIV_Tab = styled.div`
+const DIV_Tab = styled.div<StyledTabProps>`
   display: flex;
   ${Theme.Typography.subtitle2};
   ${Theme.Typography.extraBold};
@@ -36,11 +42,7 @@ const DIV_Tab = styled.div`
   box-sizing: border-box;
   border-bottom: 2px solid ${Theme.Color.gray100};
   margin-bottom: 8px;
-
-  ${Theme.MediaQuery.mobile} {
-    min-width: 100%;
-    width: max-content;
-  }
+  width: 100%;
 
   .active {
     color: ${Theme.Color.gray900};
@@ -51,6 +53,7 @@ const DIV_Tab = styled.div`
     box-sizing: border-box;
     padding: 16px 8px;
     ${columnGap('18px')}
+    flex-shrink: 0;
     &.active {
       position: relative;
       &::after {
@@ -64,5 +67,8 @@ const DIV_Tab = styled.div`
       }
     }
   }
+
+  ${({ styles }) => styles};
 `;
+
 export default Tab;

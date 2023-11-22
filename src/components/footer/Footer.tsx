@@ -1,3 +1,4 @@
+import { HoverDefaultstyle } from '@/style/common.style';
 import { ReactElement } from 'react';
 import styled from 'styled-components';
 import Link from '../common/Link';
@@ -24,9 +25,7 @@ const DIV_Footer = styled.div`
   img {
     width: 30px;
     height: 30px;
-    &:hover {
-      opacity: 0.8;
-    }
+    ${HoverDefaultstyle}
   }
 `;
 export default Footer;

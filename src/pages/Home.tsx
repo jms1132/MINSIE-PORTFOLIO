@@ -4,6 +4,7 @@ import Portfolio from '@/components/part/Portfolio';
 import Skill from '@/components/part/Skill/Skill';
 import DefaultTemplate from '@/components/template/DefaultTemplate';
 import { Theme } from '@/style/Theme';
+import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
 import { ReactElement } from 'react';
 import styled from 'styled-components';
 
@@ -22,7 +23,8 @@ const Home = (): ReactElement => {
 
 const MAIN_Home = styled.main`
   .section {
-    padding: 150px 0;
+    padding-top: 150px;
+    padding-bottom: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,6 +47,25 @@ const MAIN_Home = styled.main`
         display: inline-block;
         width: 130%;
         height: 110%;
+      }
+    }
+  }
+
+  ${tabletMedia} {
+    .section {
+      padding-top: 120px;
+      padding-bottom: 120px;
+      .section-title {
+        padding-bottom: 80px;
+      }
+    }
+  }
+  ${mobileMedia} {
+    .section {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      .section-title {
+        padding-bottom: 60px;
       }
     }
   }

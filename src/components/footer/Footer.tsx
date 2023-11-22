@@ -24,6 +24,9 @@ const DIV_Footer = styled.div`
   img {
     width: 30px;
     height: 30px;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `;
 export default Footer;

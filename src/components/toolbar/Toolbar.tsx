@@ -1,5 +1,6 @@
 import { setPagePosition } from '@/store/pagePosition/PagePosition';
 import { Theme } from '@/style/Theme';
+import { mobileMedia } from '@/style/deviceWidth';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { styled } from 'styled-components';
@@ -29,19 +30,21 @@ const Toolbar = (props: ToolbarProps) => {
 
   return (
     <DIV_Toolbar className={`${scrollY > 80 ? 'scroll' : ''}`}>
-      <div
-        className={`content-max toolbar-row ${
-          props.mobileColored ? 'm-colored' : ''
-        } `}
-      >
-        <Link href="/" className="toolbar-title">
-          MINSIE.
-        </Link>
-        <div className="toolbar-menu">
-          <Link onClick={() => movePagePosition('introduce')}>소개</Link>
-          <Link onClick={() => movePagePosition('skill')}>기술스택</Link>
-          <Link onClick={() => movePagePosition('portfolio')}>포트폴리오</Link>
-          <Link onClick={() => movePagePosition('contact')}>CONTACT</Link>
+      <div className="toolbar-area content-max ">
+        <div
+          className={`toolbar-row ${props.mobileColored ? 'm-colored' : ''} `}
+        >
+          <Link href="/" className="toolbar-title">
+            MINSIE.
+          </Link>
+          <div className="toolbar-menu">
+            <Link onClick={() => movePagePosition('introduce')}>소개</Link>
+            <Link onClick={() => movePagePosition('skill')}>기술스택</Link>
+            <Link onClick={() => movePagePosition('portfolio')}>
+              포트폴리오
+            </Link>
+            <Link onClick={() => movePagePosition('contact')}>CONTACT</Link>
+          </div>
         </div>
       </div>
     </DIV_Toolbar>
@@ -86,6 +89,10 @@ const DIV_Toolbar = styled.div`
         }
       }
     }
+  }
+
+  ${mobileMedia} {
+    width: 100%;
   }
 `;
 export default Toolbar;

@@ -152,13 +152,13 @@ const DIV_ContentSection = styled.div`
   ${mobileMedia} {
     .title {
       div:first-child {
-        font-size: 24px;
+        font-size: 7vw;
       }
       div:nth-child(2n) {
-        font-size: 28px;
+        font-size: 6vw;
       }
       div:nth-child(3n) {
-        font-size: 50px;
+        font-size: 12vw;
       }
     }
     .sub-title {

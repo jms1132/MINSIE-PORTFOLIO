@@ -1,4 +1,5 @@
 import { Theme } from '@/style/Theme';
+import { mobileMedia } from '@/style/deviceWidth';
 import { ReactElement } from 'react';
 import styled from 'styled-components';
 
@@ -58,6 +59,15 @@ const DIV_ContactCard = styled.div`
     }
     .content {
       ${Theme.Typography.subtitle1};
+    }
+  }
+
+  ${mobileMedia} {
+    .info {
+      .content {
+        font-size: 5vw;
+        word-break: break-all;
+      }
     }
   }
 `;

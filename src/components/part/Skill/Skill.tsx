@@ -106,7 +106,7 @@ const DIV_ContentSection = styled.div`
   }
   ${mobileMedia} {
     .tabs {
-      padding: 0 40px 2px;
+      padding: 0 20px 2px;
     }
     .graph-part {
       grid-template-columns: repeat(1, 100%);

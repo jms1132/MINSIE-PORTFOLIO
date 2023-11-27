@@ -46,7 +46,7 @@ const DIV_Contents = styled.div`
   }
   ${mobileMedia} {
     .content-max {
-      padding: 0 40px;
+      padding: 0 20px;
     }
   }
 `;

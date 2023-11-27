@@ -10,8 +10,8 @@ import {
 } from 'redux-persist';
 import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 import storage from 'redux-persist/lib/storage';
-import pagePosition from './pagePosition/PagePosition';
 import device from './device/Device';
+import pagePosition from './pagePosition/PagePosition';
 
 const rootPersistConfig = {
   key: 'root',

@@ -39,13 +39,13 @@ const DIV_ContactCard = styled.div`
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   cursor: default;
-  @media (hover: hover) {
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0px 8px 24px #fe9a2e;
-      /* box-shadow: 0px 8px 24px #626567; */
-    }
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 24px #fe9a2e;
+    /* box-shadow: 0px 8px 24px #626567; */
   }
+
   .icon {
     width: 43px;
     height: 43px;
@@ -55,7 +55,7 @@ const DIV_ContactCard = styled.div`
     flex-direction: column;
     gap: 10px;
     .title {
-      font-size: 18px;
+      font-size: 4vw;
     }
     .content {
       ${Theme.Typography.subtitle1};
@@ -65,7 +65,7 @@ const DIV_ContactCard = styled.div`
   ${mobileMedia} {
     .info {
       .content {
-        font-size: 5vw;
+        font-size: 4.5vw;
         word-break: break-all;
       }
     }

@@ -149,7 +149,7 @@ const DIV_Toolbar = styled.div`
 
   ${mobileMedia} {
     .toolbar-area {
-      padding: 15px 40px;
+      padding: 15px 20px;
     }
   }
 `;

@@ -4,6 +4,7 @@ import { Theme } from '@/style/Theme';
 import { tabletMedia } from '@/style/deviceWidth';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { TypeAnimation } from 'react-type-animation';
 import { styled } from 'styled-components';
 import ContactCard from './ContactCard';
 
@@ -35,9 +36,14 @@ const Contact = (): ReactElement => {
         연락처
       </div>
       <DIV_ContentSection>
-        <div className={`question ${typeStart ? 'animate' : ''}`}>
-          "사용자를 위한 서비스 개발이란 무엇일까?"
-        </div>
+        {typeStart && (
+          <TypeAnimation
+            className="question"
+            sequence={['"사용자를 위한 서비스 개발이란 무엇일까?"']}
+            speed={10}
+            style={{ display: 'inline-block', wordBreak: 'keep-all' }}
+          />
+        )}
         <div className="answer">
           <p>안녕하세요. 개발자 정민지입니다.</p>
           <p>
@@ -84,13 +90,13 @@ const DIV_ContentSection = styled.div`
   }
   .question {
     font-family: 'GyeonggiBatang';
-    font-size: 25px;
+    ${Theme.Typography.h2};
     margin-bottom: 30px;
 
     &.animate {
       width: 36ch;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: pre-line;
       border-right: 2px solid;
       animation: typing 2s steps(30, end) forwards, blinking 0.75s infinite;
     }
@@ -99,9 +105,6 @@ const DIV_ContentSection = styled.div`
     ${Theme.Typography.regular};
     ${Theme.Typography.subtitle2};
     word-break: keep-all;
-  }
-
-  ${tabletMedia} {
   }
 
   @keyframes typing {

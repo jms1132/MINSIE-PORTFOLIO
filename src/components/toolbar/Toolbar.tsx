@@ -32,6 +32,7 @@ const Toolbar = () => {
 
   const movePagePosition = (page: string) => {
     dispatch(setPagePosition(page));
+    setOpenSideBar(false);
   };
 
   return (

@@ -55,7 +55,7 @@ const DIV_ContactCard = styled.div`
     flex-direction: column;
     gap: 10px;
     .title {
-      font-size: 4vw;
+      font-size: 20px;
     }
     .content {
       ${Theme.Typography.subtitle1};
@@ -64,6 +64,9 @@ const DIV_ContactCard = styled.div`
 
   ${mobileMedia} {
     .info {
+      .title {
+        font-size: 4.5vw;
+      }
       .content {
         font-size: 4.5vw;
         word-break: break-all;

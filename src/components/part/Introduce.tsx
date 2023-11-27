@@ -90,17 +90,15 @@ const DIV_ContentSection = styled.div`
     height: 0;
     margin: 90px auto 50px;
     border: none;
-    border-top: 3px solid #fe9a2e;
+    border-top: 3px solid ${Theme.Color.primary};
     opacity: 1;
   }
   .title {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     justify-content: center;
-
-    color: #000000;
+    color: ${Theme.Color.black};
     div:first-child {
       padding-bottom: 80px;
       font-size: 30px;
@@ -113,11 +111,11 @@ const DIV_ContentSection = styled.div`
     }
     div:nth-child(3n) {
       font-size: 80px;
-      color: #ffffff;
+      color: ${Theme.Color.white};
       ${Theme.Typography.extraBold};
     }
     span {
-      color: #fe9a2e;
+      color: ${Theme.Color.primary};
     }
   }
   .sub-title {

@@ -32,7 +32,7 @@ const system = {
 };
 
 const Color = {
-  primary: { ...blue },
+  primary: '#fe9a2e',
   ...blue,
   ...gray,
   system,

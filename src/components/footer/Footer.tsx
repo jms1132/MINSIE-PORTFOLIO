@@ -1,3 +1,4 @@
+import { Theme } from '@/style/Theme';
 import { HoverDefaultstyle } from '@/style/common.style';
 import { ReactElement } from 'react';
 import styled from 'styled-components';
@@ -21,7 +22,7 @@ const DIV_Footer = styled.div`
   justify-content: center;
   gap: 20px;
   padding: 50px 0 80px;
-  color: #909497;
+  color: ${Theme.Color.gray600};
   img {
     width: 30px;
     height: 30px;

@@ -63,14 +63,14 @@ const DIV_SkillGraph = styled.div<StyledSkillGraphProps>`
       word-break: keep-all;
     }
     .graph {
-      background: #e2e8f0;
+      background: ${Theme.Color.gray200};
       border-radius: 6px;
       position: relative;
       width: 100%;
       height: 12px;
       overflow: hidden;
       .progress {
-        background: #495fef;
+        background: ${Theme.Color.blue500};
         position: absolute;
         left: 0px;
         top: 0px;

@@ -1,4 +1,5 @@
 import Assets from '@/assets/Assets';
+import { menuArray } from '@/model/Menu';
 import { useDeviceSelector } from '@/store/device/Selector';
 import { setPagePosition } from '@/store/pagePosition/PagePosition';
 import { Theme } from '@/style/Theme';
@@ -58,12 +59,14 @@ const Toolbar = () => {
               />
             ) : (
               <div className="toolbar-menu">
-                <Link onClick={() => movePagePosition('introduce')}>소개</Link>
-                <Link onClick={() => movePagePosition('skill')}>기술스택</Link>
-                <Link onClick={() => movePagePosition('portfolio')}>
-                  포트폴리오
-                </Link>
-                <Link onClick={() => movePagePosition('contact')}>CONTACT</Link>
+                {menuArray.map((menu, idx) => (
+                  <Link
+                    key={`menu-${idx}`}
+                    onClick={() => movePagePosition(menu.position)}
+                  >
+                    {menu.name}
+                  </Link>
+                ))}
               </div>
             )}
           </div>
@@ -76,7 +79,19 @@ const Toolbar = () => {
               className={`side-bar ${openSideBar ? 'on' : ''}`}
               onClick={(e) => e.stopPropagation()}
             >
-              sideBar
+              <div className="side-bar-title">M</div>
+              <div className="side-bar-menu">
+                {menuArray.map((menu, idx) => (
+                  <Link
+                    className="menu-item"
+                    key={`bar-menu-${idx}`}
+                    onClick={() => movePagePosition(menu.position)}
+                  >
+                    <img src={menu.icon} alt="" />
+                    {menu.m_name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </DIV_SideBar>
         </div>
@@ -87,11 +102,11 @@ const Toolbar = () => {
 
 const DIV_Toolbar = styled.div`
   &.scroll {
-    background-color: #ffffff;
+    background-color: ${Theme.Color.white};
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     .toolbar-area {
       .toolbar-row {
-        color: #000000;
+        color: ${Theme.Color.black};
       }
     }
   }
@@ -113,7 +128,6 @@ const DIV_Toolbar = styled.div`
       justify-content: space-between;
 
       .toolbar-title {
-        cursor: pointer;
         ${Theme.Typography.h1};
         ${Theme.Typography.bold};
       }
@@ -127,7 +141,7 @@ const DIV_Toolbar = styled.div`
             ${Theme.Typography.extraBold};
           }
           &:hover {
-            color: #fe9a2e;
+            color: ${Theme.Color.primary};
           }
         }
       }
@@ -141,7 +155,7 @@ const DIV_Toolbar = styled.div`
         opacity: 0.7;
         cursor: pointer;
         &:hover {
-          color: #fe9a2e;
+          color: ${Theme.Color.primary};
         }
       }
     }
@@ -172,21 +186,60 @@ const DIV_SideBar = styled.div`
   }
 
   .side-bar {
-    background-color: #fff;
-    height: 100%;
-    right: -50%;
+    background-color: ${Theme.Color.white};
+    height: calc(100% - 16px);
+    right: -70%;
     overflow: scroll;
     position: absolute;
     transition: right 0.3s ease;
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-direction: column;
+    gap: 40px;
     overflow: auto;
+    margin: 8px;
+    border-radius: 16px;
+    padding: 50px 0 0px;
     &.on {
       right: 0;
     }
 
-    padding: 29px 24px 0px;
+    .side-bar-title {
+      background-color: ${Theme.Color.primary};
+      border-radius: 50%;
+      width: fit-content;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: ${Theme.Color.white};
+      ${Theme.Typography.h1};
+      margin: 0 auto;
+    }
+    .side-bar-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 16px;
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        ${Theme.Typography.h3};
+        ${Theme.Typography.extraBold};
+        padding: 5px 16px;
+
+        &:hover {
+          color: ${Theme.Color.white};
+          background-color: ${Theme.Color.primary};
+          border-radius: 16px;
+        }
+        img {
+          width: 30px;
+        }
+      }
+    }
   }
 `;
 export default Toolbar;

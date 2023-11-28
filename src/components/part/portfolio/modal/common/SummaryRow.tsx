@@ -19,8 +19,6 @@ const DIV_SummaryRow = styled.div`
   .title {
     width: 20%;
   }
-  .content {
-  }
 `;
 
 export default SummaryRow;

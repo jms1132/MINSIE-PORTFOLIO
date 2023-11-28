@@ -69,6 +69,9 @@ const PortfolioModal = (props: PortfolioModalProps): ReactElement => {
               <Link
                 href="https://github.com/jms1132/MINSIE-PORTFOLIO"
                 target="_blank"
+                styles={css`
+                  text-decoration: underline;
+                `}
               >
                 https://github.com/jms1132/MINSIE-PORTFOLIO
               </Link>
@@ -176,11 +179,13 @@ const DIV_Header = styled.div`
 
 const DIV_MainContent = styled.div`
   padding-right: 10px;
+
   img {
     width: 100%;
     margin-bottom: 100px;
     border-radius: 8px;
   }
+
   .summary {
   }
 
@@ -188,6 +193,7 @@ const DIV_MainContent = styled.div`
     img {
       margin-bottom: 30px;
     }
+
     .summary {
       display: flex;
       flex-direction: column;

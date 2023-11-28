@@ -30,12 +30,19 @@ const Portfolio = (): ReactElement => {
         {portfolioArray.map((item, idx) => (
           <>
             <div key={`portfolio-${idx}`} className="portfolio-item">
-              <img
-                onClick={() => setPortfolioModal(item)}
-                src={item.img}
-                alt=""
-              />
-
+              <div className="thumbnail-wrap">
+                <img
+                  className="click-button blink"
+                  src="./images/common/icon-click.svg"
+                  alt=""
+                />
+                <img
+                  className="thumbnail"
+                  onClick={() => setPortfolioModal(item)}
+                  src={item.img}
+                  alt=""
+                />
+              </div>
               <div className="content">
                 <div
                   onClick={() => setPortfolioModal(item)}
@@ -94,11 +101,23 @@ const DIV_ContentSection = styled.div`
   .portfolio-item {
     display: flex;
     gap: 30px;
-
-    img {
-      width: 50%;
-      border-radius: 8px;
-      ${HoverDefaultstyle}
+    .thumbnail-wrap {
+      position: relative;
+      .click-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        background-color: ${Theme.Color.white};
+        border-radius: 50%;
+        border: 2px solid ${Theme.Color.primary};
+        padding: 3px;
+      }
+      .thumbnail {
+        width: 50%;
+        border-radius: 8px;
+        ${HoverDefaultstyle}
+      }
     }
     .content {
       .item-title {
@@ -118,8 +137,12 @@ const DIV_ContentSection = styled.div`
   ${mobileMedia} {
     .portfolio-item {
       flex-direction: column;
-      img {
-        width: 100%;
+      .thumbnail-wrap {
+        .click-button {
+        }
+        .thumbnail {
+          width: 100%;
+        }
       }
       .content {
         .item-title {
@@ -129,6 +152,16 @@ const DIV_ContentSection = styled.div`
         }
       }
     }
+  }
+
+  @keyframes blink-effect {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .blink {
+    animation: blink-effect 2s step-end infinite;
   }
 `;
 export default Portfolio;

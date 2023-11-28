@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Theme } from '@/style/Theme';
 import { ReactElement } from 'react';
 import styled from 'styled-components';

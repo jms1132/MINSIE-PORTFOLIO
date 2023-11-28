@@ -6,6 +6,7 @@ import { HoverDefaultstyle } from '@/style/common.style';
 import { mobileMedia } from '@/style/deviceWidth';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { css, styled } from 'styled-components';
+import PortfolioModal from './modal/PortfolioModal';
 
 const Portfolio = (): ReactElement => {
   const pagePosition = usePagePositionSelector();
@@ -72,8 +73,10 @@ const Portfolio = (): ReactElement => {
         ))}
       </DIV_ContentSection>
       {portfolioModal?.kind === 'portfolio' && (
-        <></>
-        // <PortfolioModal onClose={() => setPortfolioModal(undefined)} portfolio={portfolioModal} />
+        <PortfolioModal
+          onClose={() => setPortfolioModal(undefined)}
+          portfolio={portfolioModal}
+        />
       )}
     </DIV_PortfolioWrap>
   );

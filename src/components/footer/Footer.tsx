@@ -8,7 +8,7 @@ const Footer = (): ReactElement => {
   return (
     <DIV_Footer>
       <Link href="https://github.com/jms1132" target="_blank">
-        <img src="./images/github-logo.svg" alt="" />
+        <img src="./images/skill/github-logo.svg" alt="" />
       </Link>
       © 2023. Minsie Chung. All rights reserved.
     </DIV_Footer>

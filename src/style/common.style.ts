@@ -8,6 +8,24 @@ export const HoverDefaultstyle = css`
   }
 `;
 
+export const ScrollbarDefaultStyle = css`
+  &::-webkit-scrollbar-corner {
+    background-color: inherit;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #bfc6d2;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+  }
+`;
+
 export const fadeInUp = css`
   &.animate {
     transform: translate(0px);

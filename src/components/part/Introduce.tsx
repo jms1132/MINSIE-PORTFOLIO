@@ -60,7 +60,7 @@ const DIV_IntroduceWrap = styled.div`
         rgba(112, 93, 80, 0.8) 0,
         rgba(112, 93, 80, 0.8) 90%
       ),
-      url('./images/main-bg.jpg') 50% no-repeat;
+      url('./images/common/main-bg.jpg') 50% no-repeat;
     background-size: cover;
     padding-top: 170px;
   }

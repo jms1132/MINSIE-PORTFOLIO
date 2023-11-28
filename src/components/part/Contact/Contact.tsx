@@ -33,7 +33,7 @@ const Contact = (): ReactElement => {
   return (
     <DIV_ContactWrap className="section content-max" ref={contactRef}>
       <div className="section-title" ref={ref}>
-        연락처
+        Contact !
       </div>
       <DIV_ContentSection>
         {typeStart && (
@@ -41,7 +41,7 @@ const Contact = (): ReactElement => {
             className="question"
             sequence={['"사용자를 위한 서비스 개발이란 무엇일까?"']}
             speed={10}
-            style={{ display: 'inline-block', wordBreak: 'keep-all' }}
+            style={{ display: 'inline-block' }}
           />
         )}
         <div className="answer">

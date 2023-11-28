@@ -1,5 +1,6 @@
 import LinkHoverStyle from '@/style/LinkHoverStyle';
 import { StyledProps } from '@/style/StyledProps';
+import { HoverDefaultstyle } from '@/style/common.style';
 import { History } from 'history';
 import { AnchorHTMLAttributes, MouseEventHandler, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -78,6 +79,7 @@ const A_Link = styled.a<StyledProps>`
       opacity: 1;
     }
   }
+  ${HoverDefaultstyle}
   ${({ styles }) => styles}
 `;
 

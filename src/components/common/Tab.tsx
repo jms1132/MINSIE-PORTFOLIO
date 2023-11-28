@@ -1,5 +1,5 @@
 import { Theme } from '@/style/Theme';
-import { columnGap } from '@/style/common.style';
+import { HoverDefaultstyle, columnGap } from '@/style/common.style';
 import { HTMLAttributes, ReactElement, ReactNode } from 'react';
 import styled, { CSSProp } from 'styled-components';
 
@@ -49,7 +49,7 @@ const DIV_Tab = styled.div<StyledTabProps>`
   }
 
   > .tab {
-    cursor: pointer;
+    ${HoverDefaultstyle}
     box-sizing: border-box;
     padding: 16px 8px;
     ${columnGap('18px')}

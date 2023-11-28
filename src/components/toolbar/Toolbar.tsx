@@ -3,6 +3,7 @@ import { menuArray } from '@/model/Menu';
 import { useDeviceSelector } from '@/store/device/Selector';
 import { setPagePosition } from '@/store/pagePosition/PagePosition';
 import { Theme } from '@/style/Theme';
+import { HoverDefaultstyle } from '@/style/common.style';
 import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -18,17 +19,18 @@ const Toolbar = () => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 
-  const updateScroll = () => {
-    setScrollY(window.scrollY || document.documentElement.scrollTop);
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
+    const updateScroll = () => {
+      dispatch(setPagePosition(''));
 
+      setScrollY(window.scrollY || document.documentElement.scrollTop);
+    };
+
+    window.addEventListener('scroll', updateScroll);
     return () => {
       window.removeEventListener('scroll', updateScroll);
     };
-  }, [scrollY]);
+  }, [scrollY, dispatch]);
 
   const movePagePosition = (page: string) => {
     dispatch(setPagePosition(page));
@@ -137,7 +139,7 @@ const DIV_Toolbar = styled.div`
         gap: 40px;
         > * {
           font-size: 18px;
-          cursor: pointer;
+
           &:last-child {
             ${Theme.Typography.extraBold};
           }
@@ -154,7 +156,7 @@ const DIV_Toolbar = styled.div`
       padding: 20px 60px;
       .menu-icon {
         opacity: 0.7;
-        cursor: pointer;
+        ${HoverDefaultstyle};
         &:hover {
           color: ${Theme.Color.primary};
         }

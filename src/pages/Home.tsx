@@ -1,7 +1,7 @@
-import Contact from '@/components/part/Contact/Contact';
+import Contact from '@/components/part/contact/Contact';
 import Introduce from '@/components/part/Introduce';
-import Portfolio from '@/components/part/Portfolio';
-import Skill from '@/components/part/Skill/Skill';
+import Portfolio from '@/components/part/portfolio/Portfolio';
+import Skill from '@/components/part/skill/Skill';
 import DefaultTemplate from '@/components/template/DefaultTemplate';
 import { Theme } from '@/style/Theme';
 import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
@@ -38,7 +38,7 @@ const MAIN_Home = styled.main`
       width: fit-content;
       &::after {
         content: '';
-        background-image: url(./images/line.png);
+        background-image: url(./images/common/line.png);
         background-size: 100%;
         background-repeat: no-repeat;
         position: absolute;

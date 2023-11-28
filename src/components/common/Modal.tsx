@@ -1,6 +1,5 @@
 import { StyledProps } from '@/style/StyledProps';
 import { KeyDownEventRegister } from '@/utils/Event';
-
 import {
   HTMLAttributes,
   MouseEvent,
@@ -8,7 +7,6 @@ import {
   ReactNode,
   useRef,
 } from 'react';
-
 import styled from 'styled-components';
 
 export interface ModalProps

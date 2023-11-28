@@ -1,7 +1,7 @@
-import Contact from '@/components/part/contacts/Contact';
+import Contact from '@/components/part/contact/Contact';
 import Introduce from '@/components/part/Introduce';
 import Portfolio from '@/components/part/portfolio/Portfolio';
-import Skill from '@/components/part/skills/Skill';
+import Skill from '@/components/part/skill/Skill';
 import DefaultTemplate from '@/components/template/DefaultTemplate';
 import { Theme } from '@/style/Theme';
 import { mobileMedia, tabletMedia } from '@/style/deviceWidth';

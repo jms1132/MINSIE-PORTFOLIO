@@ -20,9 +20,9 @@ const Label = (props: LabelProps): ReactElement => {
 };
 
 const DIV_Label = styled.div<StyledLabelProps>`
-  border-radius: 8px;
+  border-radius: 6px;
   width: fit-content;
-  padding: 4px 8px;
+  padding: 6px 10px;
 
   ${({ styles }) => styles};
 `;

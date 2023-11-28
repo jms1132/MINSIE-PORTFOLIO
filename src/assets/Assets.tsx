@@ -27,6 +27,15 @@ const Assets = {
     colorType: 'stroke',
     viewBox: '0 0 36 36',
   },
+  closeThin16: {
+    icon: (
+      <>
+         <path d="m8.899 8 5.915-5.914a.636.636 0 0 0-.9-.9L8.002 7.102 2.086 1.187a.634.634 0 0 0-.9 0 .634.634 0 0 0 0 .899L7.102 8l-5.914 5.914A.634.634 0 0 0 1.636 15a.635.635 0 0 0 .45-.187L8 8.899l5.914 5.914a.635.635 0 1 0 .899-.9L8.899 8z" />
+      </>
+    ),
+    colorType: 'stroke',
+    viewBox: VIEW_BOX_16,
+  },
 };
 
 export default Assets as Records<typeof Assets, AssetType>;

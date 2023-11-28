@@ -83,6 +83,7 @@ const Portfolio = (): ReactElement => {
 };
 const DIV_PortfolioWrap = styled.div`
   background: linear-gradient(0deg, #ffffff 0%, #fef5e7 60%, #fdebd0 100%);
+  padding-bottom: 0 !important;
 `;
 
 const DIV_ContentSection = styled.div`

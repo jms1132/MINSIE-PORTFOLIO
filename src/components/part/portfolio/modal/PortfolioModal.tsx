@@ -131,13 +131,11 @@ const modalStyle = css`
     .modal-inner {
       width: 100%;
       height: 100%;
-      max-height: initial;
-      max-width: initial;
+      max-height: 90%;
+      max-width: 90%;
       background-color: ${Theme.Color.white};
       color: ${Theme.Color.black};
       padding: 30px 30px;
-      border-radius: 0;
-      overflow: auto;
 
       .modal-close-btn {
         display: unset;

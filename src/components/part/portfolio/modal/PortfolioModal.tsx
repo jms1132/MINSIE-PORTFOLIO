@@ -37,7 +37,11 @@ const PortfolioModal = (props: PortfolioModalProps): ReactElement => {
   const mainContent = useMemo(() => {
     return (
       <DIV_MainContent>
-        <img src={'./images/portfolio/img-portfolio-site.png'} alt="" />
+        <img
+          className="thumbnail-img"
+          src={'./images/portfolio/img-portfolio-site.png'}
+          alt=""
+        />
         <div className="summary">
           <SummaryRow
             name={'SKILLS'}
@@ -146,9 +150,7 @@ const modalStyle = css`
         top: 18px;
         right: 16px;
       }
-
       > main {
-        overflow: auto;
         ${HideScrollbarStyle}
       }
     }
@@ -179,8 +181,7 @@ const DIV_Header = styled.div`
 
 const DIV_MainContent = styled.div`
   padding-right: 10px;
-
-  img {
+  .thumbnail-img {
     width: 100%;
     margin-bottom: 100px;
     border-radius: 8px;
@@ -190,7 +191,7 @@ const DIV_MainContent = styled.div`
   }
 
   ${mobileMedia} {
-    img {
+    .thumbnail-img {
       margin-bottom: 30px;
     }
 

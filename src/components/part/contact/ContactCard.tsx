@@ -1,3 +1,4 @@
+import Link from '@/components/common/Link';
 import { Theme } from '@/style/Theme';
 import { mobileMedia } from '@/style/deviceWidth';
 import { ReactElement } from 'react';
@@ -19,7 +20,9 @@ const ContactCard = (props: ContactProps): ReactElement => {
       <img className="icon" src={props.info.icon}></img>
       <div className="info">
         <div className="title">{props.info.name}</div>
-        <div className="content">{props.info.content}</div>
+        <div className="content">
+          <Link href="tel:010-3914-6562">{props.info.content}</Link>
+        </div>
       </div>
     </DIV_ContactCard>
   );

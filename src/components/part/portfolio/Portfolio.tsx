@@ -1,12 +1,25 @@
 import Label from '@/components/common/Label';
+import ImageSlider from '@/components/common/slider/ImageSlider';
 import { portfolio, portfolioArray } from '@/model/Portfolio';
 import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
 import { HoverDefaultstyle } from '@/style/common.style';
 import { mobileMedia } from '@/style/deviceWidth';
-import { ReactElement, useEffect, useRef, useState } from 'react';
+import { ReactElement, useEffect, useMemo, useRef, useState } from 'react';
+import { Settings } from 'react-slick';
 import { css, styled } from 'styled-components';
 import PortfolioModal from './modal/PortfolioModal';
+
+const labelColor = {
+  Web: {
+    background: '#ebdef0',
+    color: '#884ea0',
+  },
+  Mobile: {
+    background: '#d1f2eb',
+    color: '#148f77',
+  },
+};
 
 const Portfolio = (): ReactElement => {
   const pagePosition = usePagePositionSelector();
@@ -14,6 +27,14 @@ const Portfolio = (): ReactElement => {
   const [portfolioModal, setPortfolioModal] = useState<portfolio | undefined>(
     undefined
   );
+
+  const sliderSettings: Settings = useMemo(() => {
+    return {
+      fade: false,
+      autoplay: true,
+      autoplaySpeed: 3200,
+    };
+  }, []);
 
   useEffect(() => {
     if (pagePosition === 'portfolio' && portfolioRef.current) {
@@ -24,9 +45,9 @@ const Portfolio = (): ReactElement => {
   }, [pagePosition]);
 
   return (
-    <DIV_PortfolioWrap className="section content-max" ref={portfolioRef}>
+    <DIV_PortfolioWrap className="section" ref={portfolioRef}>
       <div className="section-title">포트폴리오</div>
-      <DIV_ContentSection>
+      <DIV_ContentSection className="content-max">
         {portfolioArray.map((item, idx) => (
           <>
             <div key={`portfolio-${idx}`} className="portfolio-item">
@@ -36,12 +57,32 @@ const Portfolio = (): ReactElement => {
                   src="./images/common/icon-click.svg"
                   alt=""
                 />
-                <img
-                  className="thumbnail"
-                  onClick={() => setPortfolioModal(item)}
-                  src={item.img}
-                  alt=""
-                />
+                {item.video ? (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="thumbnail"
+                    onClick={() => setPortfolioModal(item)}
+                  >
+                    <source src={item.video} type="video/mp4" />
+                  </video>
+                ) : (
+                  <ImageSlider
+                    className="thumbnail thumbnail-slider"
+                    sliderSettings={sliderSettings}
+                  >
+                    {item.img?.map((img, idx) => (
+                      <img
+                        key={`img-${idx}`}
+                        onClick={() => setPortfolioModal(item)}
+                        src={img}
+                        alt=""
+                      />
+                    ))}
+                  </ImageSlider>
+                )}
               </div>
               <div className="content">
                 <div
@@ -51,25 +92,33 @@ const Portfolio = (): ReactElement => {
                   {item.title}
                 </div>
                 <div className="item-label-list">
-                  {item.label.includes('web') && (
+                  {(item.labels as string[])?.map?.((label, idx) => (
                     <Label
-                      name={'Web'}
+                      key={`label-${idx}`}
+                      name={label}
                       styles={css`
                         ${Theme.Typography.subtitle3};
                         ${Theme.Typography.extraBold};
-                        background: #ebdef0;
-                        color: #884ea0;
+                        background: ${Object.entries(labelColor).find(
+                          (color) => color[0] === label
+                        )?.[1].background};
+                        color: ${Object.entries(labelColor).find(
+                          (color) => color[0] === label
+                        )?.[1].color};
                       `}
                     />
-                  )}
-                  {item.label.includes('mobile') && (
+                  )) || (
                     <Label
-                      name={'Mobile'}
+                      name={item.labels as string}
                       styles={css`
                         ${Theme.Typography.subtitle3};
                         ${Theme.Typography.extraBold};
-                        background: #d1f2eb;
-                        color: #148f77;
+                        background: ${Object.entries(labelColor).find(
+                          (color) => color[0] === item.labels
+                        )?.[1].background};
+                        color: ${Object.entries(labelColor).find(
+                          (color) => color[0] === item.labels
+                        )?.[1].color};
                       `}
                     />
                   )}
@@ -96,13 +145,18 @@ const DIV_PortfolioWrap = styled.div`
 const DIV_ContentSection = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 60px;
   .portfolio-item {
+    width: 100%;
     display: flex;
     gap: 30px;
     .thumbnail-wrap {
+      width: 50%;
       position: relative;
+
       .click-button {
         position: absolute;
         top: 10px;
@@ -112,11 +166,51 @@ const DIV_ContentSection = styled.div`
         border-radius: 50%;
         border: 2px solid ${Theme.Color.primary};
         padding: 3px;
+        z-index: 100;
       }
       .thumbnail {
-        width: 50%;
+        width: 100%;
         border-radius: 8px;
+        border: 1px solid rgb(245, 246, 247);
         ${HoverDefaultstyle}
+
+        &.thumbnail-slider {
+          .slick-slider {
+            background-color: ${Theme.Color.white};
+            position: initial;
+            > .slick-arrow {
+              visibility: hidden;
+              display: flex !important;
+              justify-content: center;
+              align-items: center;
+              border-radius: 50%;
+              background-color: rgba(255, 255, 255, 0.2);
+              width: 32px;
+              height: 32px;
+              &.slick-prev {
+                left: 25px;
+                > svg {
+                  transform: rotate(-180deg);
+                }
+              }
+              &.slick-next {
+                right: 25px;
+              }
+              &::before {
+                display: none;
+                background: none;
+              }
+            }
+            .slick-dots {
+              z-index: 2;
+              position: absolute;
+              left: 50%;
+            }
+            .slick-slide {
+              width: 100%;
+            }
+          }
+        }
       }
     }
     .content {
@@ -135,9 +229,20 @@ const DIV_ContentSection = styled.div`
   }
 
   ${mobileMedia} {
+    gap: 0;
+
+    > * + * {
+      border-top: 1px solid ${Theme.Color.gray700};
+      padding: 40px 0;
+    }
+    > *:first-child {
+      padding-bottom: 40px;
+    }
+
     .portfolio-item {
       flex-direction: column;
       .thumbnail-wrap {
+        width: 100%;
         .click-button {
         }
         .thumbnail {

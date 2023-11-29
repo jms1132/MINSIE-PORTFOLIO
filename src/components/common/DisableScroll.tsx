@@ -1,5 +1,3 @@
-// import React from 'react';
-
 import { ReactElement, useEffect, useRef } from 'react';
 
 type Props = {

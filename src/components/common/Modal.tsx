@@ -1,4 +1,5 @@
 import { StyledProps } from '@/style/StyledProps';
+import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
 import { KeyDownEventRegister } from '@/utils/Event';
 import { MouseEvent, ReactElement, ReactNode, useRef } from 'react';
 import styled from 'styled-components';
@@ -82,8 +83,49 @@ const DIV_Modal = styled.div<StyledProps>`
   .modal-inner {
     display: flex;
     flex-direction: column;
+    .modal-close-btn {
+      transform: translateX(100%);
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      &::after {
+        content: '닫기';
+        display: block;
+        position: absolute;
+        color: rgb(233, 235, 237);
+        bottom: -12px;
+        transform: translateY(100%);
+      }
+    }
   }
 
+  ${tabletMedia} {
+    .modal-inner {
+      .modal-close-btn {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+
+  ${mobileMedia} {
+    .modal-inner {
+      .modal-close-btn {
+        height: initial;
+        width: initial;
+        &::after {
+          all: unset;
+        }
+      }
+    }
+  }
   ${({ styles }) => styles && styles};
 `;
 

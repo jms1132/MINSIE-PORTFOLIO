@@ -55,12 +55,14 @@ const Introduce = (): ReactElement => {
 
 const DIV_IntroduceWrap = styled.div`
   &.introduce {
-    background: linear-gradient(
+    background:
+      linear-gradient(
         180deg,
         rgba(112, 93, 80, 0.8) 0,
         rgba(112, 93, 80, 0.8) 90%
       ),
       url('./images/common/bg-main.jpg') 50% no-repeat;
+
     background-size: cover;
     padding-top: 170px;
   }

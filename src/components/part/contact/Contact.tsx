@@ -1,7 +1,7 @@
 import { contactArray } from '@/model/Contact';
 import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
-import { tabletMedia } from '@/style/deviceWidth';
+import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { TypeAnimation } from 'react-type-animation';
@@ -81,7 +81,7 @@ const Contact = (): ReactElement => {
 const DIV_ContactWrap = styled.div``;
 
 const DIV_ContentSection = styled.div`
-  padding-bottom: 100px;
+  padding-bottom: 60px;
   .underline {
     background-image: linear-gradient(90deg, #95dac1, #fffd7f);
     background-position: bottom;
@@ -98,7 +98,9 @@ const DIV_ContentSection = styled.div`
       overflow: hidden;
       white-space: pre-line;
       border-right: 2px solid;
-      animation: typing 2s steps(30, end) forwards, blinking 0.75s infinite;
+      animation:
+        typing 2s steps(30, end) forwards,
+        blinking 0.75s infinite;
     }
   }
   .answer {
@@ -123,6 +125,10 @@ const DIV_ContentSection = styled.div`
     100% {
       border-right-color: transparent;
     }
+  }
+
+  ${mobileMedia} {
+    padding-bottom: 40px;
   }
 `;
 

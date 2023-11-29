@@ -51,7 +51,7 @@ const Toolbar = () => {
             >
               MINSIE.
             </Link>
-            {isTablet || isMobile ? (
+            {isMobile ? (
               <Icon
                 className="menu-icon"
                 onClick={() => setOpenSideBar(true)}
@@ -153,12 +153,15 @@ const DIV_Toolbar = styled.div`
 
   ${tabletMedia} {
     .toolbar-area {
-      padding: 20px 60px;
-      .menu-icon {
-        opacity: 0.7;
-        ${HoverDefaultstyle};
-        &:hover {
-          color: ${Theme.Color.primary};
+      padding: 18px 50px;
+      .toolbar-row {
+        .toolbar-title {
+        }
+        .toolbar-menu {
+          flex: 1;
+          justify-content: end;
+          display: flex;
+          gap: 5%;
         }
       }
     }
@@ -167,6 +170,19 @@ const DIV_Toolbar = styled.div`
   ${mobileMedia} {
     .toolbar-area {
       padding: 15px 20px;
+      .toolbar-row {
+        .toolbar-title {
+          ${Theme.Typography.h2};
+        }
+        .menu-icon {
+          width: 30px;
+          opacity: 0.7;
+          ${HoverDefaultstyle};
+          &:hover {
+            color: ${Theme.Color.primary};
+          }
+        }
+      }
     }
   }
 `;

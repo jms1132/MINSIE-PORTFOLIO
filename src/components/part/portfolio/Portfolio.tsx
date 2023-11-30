@@ -174,6 +174,7 @@ const DIV_ContentSection = styled.div`
       flex-direction: column;
       gap: 30px;
       flex: 1;
+      word-break: keep-all;
       .item-header {
         .item-title {
           ${Theme.Typography.h3};

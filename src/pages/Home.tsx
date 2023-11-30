@@ -15,8 +15,8 @@ const Home = (): ReactElement => {
       <DefaultTemplate>
         <Introduce />
         <Skill />
-        <Portfolio />
         <Career />
+        <Portfolio />
         <Contact />
       </DefaultTemplate>
     </MAIN_Home>

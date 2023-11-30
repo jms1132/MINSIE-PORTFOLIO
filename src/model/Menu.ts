@@ -12,17 +12,18 @@ export const menuArray = [
     m_name: 'Skill',
   },
   {
+    icon: './images/menu/ico-menu-career.svg',
+    position: 'career',
+    name: 'CAREER',
+    m_name: 'Career',
+  },
+  {
     icon: './images/menu/ico-menu-portfolio.svg',
     position: 'portfolio',
     name: '포트폴리오',
     m_name: 'Portfolio',
   },
-  {
-    icon: './images/menu/ico-menu-portfolio.svg',
-    position: 'career',
-    name: 'CAREER',
-    m_name: 'Career',
-  },
+
   {
     icon: './images/menu/ico-menu-contact.svg',
     position: 'contact',

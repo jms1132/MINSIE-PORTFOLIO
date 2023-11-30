@@ -18,6 +18,12 @@ export const menuArray = [
     m_name: 'Portfolio',
   },
   {
+    icon: './images/menu/ico-menu-portfolio.svg',
+    position: 'career',
+    name: 'CAREER',
+    m_name: 'Career',
+  },
+  {
     icon: './images/menu/ico-menu-contact.svg',
     position: 'contact',
     name: 'CONTACT',

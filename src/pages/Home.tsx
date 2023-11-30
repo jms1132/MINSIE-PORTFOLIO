@@ -1,3 +1,4 @@
+import Career from '@/components/part/Career';
 import Introduce from '@/components/part/Introduce';
 import Contact from '@/components/part/contact/Contact';
 import Portfolio from '@/components/part/portfolio/Portfolio';
@@ -15,6 +16,7 @@ const Home = (): ReactElement => {
         <Introduce />
         <Skill />
         <Portfolio />
+        <Career />
         <Contact />
       </DefaultTemplate>
     </MAIN_Home>
@@ -32,6 +34,7 @@ const MAIN_Home = styled.main`
     .section-title {
       ${Theme.Typography.h1};
       ${Theme.Typography.extraBold};
+      font-family: 'Noto Sans';
 
       padding-bottom: 100px;
       position: relative;

@@ -8,17 +8,6 @@ import { ReactElement, useEffect, useRef, useState } from 'react';
 import { css, styled } from 'styled-components';
 import PortfolioModal from './modal/PortfolioModal';
 
-// interface labelColorType {
-//   Web: {
-//     background: string;
-//     color: string;
-//   };
-//   Mobile: {
-//     background: string;
-//     color: string;
-//   };
-// }
-
 const labelColor = {
   Web: {
     background: '#ebdef0',
@@ -120,7 +109,6 @@ const Portfolio = (): ReactElement => {
 };
 const DIV_PortfolioWrap = styled.div`
   background: linear-gradient(0deg, #ffffff 0%, #fef5e7 60%, #fdebd0 100%);
-  padding-bottom: 0 !important;
 `;
 
 const DIV_ContentSection = styled.div`
@@ -155,7 +143,6 @@ const DIV_ContentSection = styled.div`
         width: 100%;
         aspect-ratio: 16 / 9;
         border-radius: 8px;
-
         ${HoverDefaultstyle}
 
         &.thumbnail-slider {

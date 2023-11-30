@@ -82,7 +82,11 @@ const Toolbar = () => {
               className={`side-bar ${openSideBar ? 'on' : ''}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="side-bar-title">M</div>
+              <img
+                className="side-bar-title"
+                src={'./images/common/img-profile.png'}
+              />
+
               <div className="side-bar-menu">
                 {menuArray.map((menu, idx) => (
                   <Link
@@ -224,16 +228,10 @@ const DIV_SideBar = styled.div`
     }
 
     .side-bar-title {
-      background-color: ${Theme.Color.primary};
       border-radius: 50%;
-      width: fit-content;
       width: 80px;
       height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: ${Theme.Color.white};
-      ${Theme.Typography.h1};
+
       margin: 0 auto;
     }
     .side-bar-menu {

@@ -1,14 +1,23 @@
 import Label from '@/components/common/Label';
-import ImageSlider from '@/components/common/slider/ImageSlider';
 import { portfolio, portfolioArray } from '@/model/Portfolio';
 import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
 import { HoverDefaultstyle } from '@/style/common.style';
 import { mobileMedia } from '@/style/deviceWidth';
-import { ReactElement, useEffect, useMemo, useRef, useState } from 'react';
-import { Settings } from 'react-slick';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import { css, styled } from 'styled-components';
 import PortfolioModal from './modal/PortfolioModal';
+
+// interface labelColorType {
+//   Web: {
+//     background: string;
+//     color: string;
+//   };
+//   Mobile: {
+//     background: string;
+//     color: string;
+//   };
+// }
 
 const labelColor = {
   Web: {
@@ -27,14 +36,6 @@ const Portfolio = (): ReactElement => {
   const [portfolioModal, setPortfolioModal] = useState<portfolio | undefined>(
     undefined
   );
-
-  const sliderSettings: Settings = useMemo(() => {
-    return {
-      fade: false,
-      autoplay: true,
-      autoplaySpeed: 3200,
-    };
-  }, []);
 
   useEffect(() => {
     if (pagePosition === 'portfolio' && portfolioRef.current) {
@@ -57,32 +58,12 @@ const Portfolio = (): ReactElement => {
                   src="./images/common/icon-click.svg"
                   alt=""
                 />
-                {item.video ? (
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="thumbnail"
-                    onClick={() => setPortfolioModal(item)}
-                  >
-                    <source src={item.video} type="video/mp4" />
-                  </video>
-                ) : (
-                  <ImageSlider
-                    className="thumbnail thumbnail-slider"
-                    sliderSettings={sliderSettings}
-                  >
-                    {item.img?.map((img, idx) => (
-                      <img
-                        key={`img-${idx}`}
-                        onClick={() => setPortfolioModal(item)}
-                        src={img}
-                        alt=""
-                      />
-                    ))}
-                  </ImageSlider>
-                )}
+                <img
+                  src={item.thumbnail}
+                  alt=""
+                  className="thumbnail"
+                  onClick={() => setPortfolioModal(item)}
+                />
               </div>
               <div className="content">
                 <div
@@ -156,6 +137,8 @@ const DIV_ContentSection = styled.div`
     .thumbnail-wrap {
       width: 50%;
       position: relative;
+      border-radius: 8px;
+      border: 1px solid rgb(245, 246, 247);
 
       .click-button {
         position: absolute;
@@ -170,8 +153,9 @@ const DIV_ContentSection = styled.div`
       }
       .thumbnail {
         width: 100%;
+        aspect-ratio: 16 / 9;
         border-radius: 8px;
-        border: 1px solid rgb(245, 246, 247);
+
         ${HoverDefaultstyle}
 
         &.thumbnail-slider {

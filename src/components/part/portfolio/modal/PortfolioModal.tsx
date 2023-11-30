@@ -30,14 +30,18 @@ const PortfolioModal = (props: PortfolioModalProps): ReactElement => {
     return ['#F5B7B1', '#D7BDE2', '#AED6F1', '#F9E79F', '#A9DFBF', '#FAD7A0'];
   }, []);
 
-  const headerContent = useMemo(() => {
-    return (
-      <DIV_Header>
-        <span>project</span>
-        <div className="header-title">{portfolio.title}</div>
-      </DIV_Header>
-    );
-  }, [portfolio]);
+  const labelColor = useMemo(() => {
+    return {
+      Web: {
+        background: '#ebdef0',
+        color: '#884ea0',
+      },
+      Mobile: {
+        background: '#d1f2eb',
+        color: '#148f77',
+      },
+    };
+  }, []);
 
   const sliderSettings: Settings = useMemo(() => {
     return {
@@ -57,6 +61,49 @@ const PortfolioModal = (props: PortfolioModalProps): ReactElement => {
       ),
     };
   }, []);
+
+  const headerContent = useMemo(() => {
+    return (
+      <DIV_Header>
+        <span>project</span>
+        <div className="header-title">
+          {portfolio.title}
+          <div className="item-label-list">
+            {(portfolio.labels as string[])?.map?.((label, idx) => (
+              <Label
+                key={`label-${idx}`}
+                name={label}
+                styles={css`
+                  ${Theme.Typography.caption1};
+                  ${Theme.Typography.extraBold};
+                  background: ${Object.entries(labelColor).find(
+                    (color) => color[0] === label
+                  )?.[1].background};
+                  color: ${Object.entries(labelColor).find(
+                    (color) => color[0] === label
+                  )?.[1].color};
+                `}
+              />
+            )) || (
+              <Label
+                name={portfolio.labels as string}
+                styles={css`
+                  ${Theme.Typography.caption1};
+                  ${Theme.Typography.extraBold};
+                  background: ${Object.entries(labelColor).find(
+                    (color) => color[0] === portfolio.labels
+                  )?.[1].background};
+                  color: ${Object.entries(labelColor).find(
+                    (color) => color[0] === portfolio.labels
+                  )?.[1].color};
+                `}
+              />
+            )}
+          </div>
+        </div>
+      </DIV_Header>
+    );
+  }, [portfolio, labelColor]);
 
   const mainContent = useMemo(() => {
     return (
@@ -223,6 +270,14 @@ const DIV_Header = styled.div`
     ${Theme.Typography.h1};
     ${Theme.Typography.extraBold};
     font-family: 'Noto Sans';
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .item-label-list {
+      display: flex;
+      gap: 10px;
+    }
   }
 
   ${mobileMedia} {
@@ -297,10 +352,10 @@ const DIV_MainContent = styled.div`
     gap: 14px;
     .content {
       li {
-        font-family: 'GmarketSansLight';
         list-style-position: inside;
         text-indent: -20px;
         font-size: 15px;
+        color: ${Theme.Color.gray700};
       }
     }
   }

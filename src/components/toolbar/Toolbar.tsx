@@ -153,7 +153,7 @@ const DIV_Toolbar = styled.div`
 
   ${tabletMedia} {
     .toolbar-area {
-      padding: 18px 50px;
+      padding: 18px 40px;
       .toolbar-row {
         .toolbar-title {
         }
@@ -161,7 +161,7 @@ const DIV_Toolbar = styled.div`
           flex: 1;
           justify-content: end;
           display: flex;
-          gap: 5%;
+          gap: 4%;
         }
       }
     }

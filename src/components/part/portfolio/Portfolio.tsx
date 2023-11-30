@@ -55,44 +55,67 @@ const Portfolio = (): ReactElement => {
                 />
               </div>
               <div className="content">
-                <div
-                  onClick={() => setPortfolioModal(item)}
-                  className="item-title"
-                >
-                  {item.title}
+                <div className="item-header">
+                  <div
+                    onClick={() => setPortfolioModal(item)}
+                    className="item-title"
+                  >
+                    {item.title}
+                  </div>
+                  <div className="item-label-list">
+                    {(item.labels as string[])?.map?.((label, idx) => (
+                      <Label
+                        key={`label-${idx}`}
+                        name={label}
+                        styles={css`
+                          ${Theme.Typography.subtitle3};
+                          ${Theme.Typography.extraBold};
+                          background: ${Object.entries(labelColor).find(
+                            (color) => color[0] === label
+                          )?.[1].background};
+                          color: ${Object.entries(labelColor).find(
+                            (color) => color[0] === label
+                          )?.[1].color};
+                        `}
+                      />
+                    )) || (
+                      <Label
+                        name={item.labels as string}
+                        styles={css`
+                          ${Theme.Typography.subtitle3};
+                          ${Theme.Typography.extraBold};
+                          background: ${Object.entries(labelColor).find(
+                            (color) => color[0] === item.labels
+                          )?.[1].background};
+                          color: ${Object.entries(labelColor).find(
+                            (color) => color[0] === item.labels
+                          )?.[1].color};
+                        `}
+                      />
+                    )}
+                  </div>
                 </div>
-                <div className="item-label-list">
-                  {(item.labels as string[])?.map?.((label, idx) => (
-                    <Label
-                      key={`label-${idx}`}
-                      name={label}
-                      styles={css`
-                        ${Theme.Typography.subtitle3};
-                        ${Theme.Typography.extraBold};
-                        background: ${Object.entries(labelColor).find(
-                          (color) => color[0] === label
-                        )?.[1].background};
-                        color: ${Object.entries(labelColor).find(
-                          (color) => color[0] === label
-                        )?.[1].color};
-                      `}
-                    />
-                  )) || (
-                    <Label
-                      name={item.labels as string}
-                      styles={css`
-                        ${Theme.Typography.subtitle3};
-                        ${Theme.Typography.extraBold};
-                        background: ${Object.entries(labelColor).find(
-                          (color) => color[0] === item.labels
-                        )?.[1].background};
-                        color: ${Object.entries(labelColor).find(
-                          (color) => color[0] === item.labels
-                        )?.[1].color};
-                      `}
-                    />
+                <div className="skill-list">
+                  {item.frontend && (
+                    <div className="skill-item">
+                      <div className="skill-kind">Frontend: </div>
+                      {item.frontend.join(', ')}
+                      {item.frontend.join(', ')}
+                    </div>
+                  )}
+                  {item.backend && (
+                    <div className="skill-item">
+                      <div className="skill-kind">Backend: </div>
+                      {item.backend.join(', ')}
+                    </div>
                   )}
                 </div>
+                {item.func && (
+                  <div className="func">
+                    <b>주요 기능: </b>
+                    {item.func}
+                  </div>
+                )}
               </div>
             </div>
           </>
@@ -144,57 +167,46 @@ const DIV_ContentSection = styled.div`
         aspect-ratio: 16 / 9;
         border-radius: 8px;
         ${HoverDefaultstyle}
-
-        &.thumbnail-slider {
-          .slick-slider {
-            background-color: ${Theme.Color.white};
-            position: initial;
-            > .slick-arrow {
-              visibility: hidden;
-              display: flex !important;
-              justify-content: center;
-              align-items: center;
-              border-radius: 50%;
-              background-color: rgba(255, 255, 255, 0.2);
-              width: 32px;
-              height: 32px;
-              &.slick-prev {
-                left: 25px;
-                > svg {
-                  transform: rotate(-180deg);
-                }
-              }
-              &.slick-next {
-                right: 25px;
-              }
-              &::before {
-                display: none;
-                background: none;
-              }
-            }
-            .slick-dots {
-              z-index: 2;
-              position: absolute;
-              left: 50%;
-            }
-            .slick-slide {
-              width: 100%;
-            }
-          }
-        }
       }
     }
     .content {
-      .item-title {
-        ${Theme.Typography.subtitle1};
-        ${Theme.Typography.extraBold};
-        font-family: 'Noto Sans';
-        ${HoverDefaultstyle}
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      flex: 1;
+      .item-header {
+        .item-title {
+          ${Theme.Typography.h3};
+          ${Theme.Typography.extraBold};
+          font-family: 'Noto Sans';
+          ${HoverDefaultstyle}
+        }
+        .item-label-list {
+          padding-top: 10px;
+          display: flex;
+          gap: 10px;
+        }
       }
-      .item-label-list {
-        padding-top: 20px;
+      .skill-list {
         display: flex;
-        gap: 10px;
+        flex-direction: column;
+        gap: 20px;
+        .skill-item {
+          display: flex;
+          ${Theme.Typography.subtitle2};
+
+          .skill-kind {
+            padding-right: 4px;
+            font-family: 'Noto Sans';
+          }
+        }
+      }
+      .func {
+        font-family: 'GmarketSansLight';
+        ${Theme.Typography.subtitle2};
+        div:first-child {
+          ${Theme.Typography.extraBold};
+        }
       }
     }
   }

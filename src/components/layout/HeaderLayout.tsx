@@ -25,7 +25,7 @@ const HEADER_Layout = styled.header<StyledProps>`
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10;
+  z-index: 101;
   background-color: transparent;
 
   ${tabletMedia} {

@@ -127,7 +127,7 @@ const PortfolioModal = (props: PortfolioModalProps): ReactElement => {
         <div className="summary">
           <SummaryRow
             name={'SKILLS'}
-            content={portfolio.skill.map((skill, index) => (
+            content={portfolio.frontend.map((skill, index) => (
               <Label
                 name={skill}
                 key={index}
@@ -181,6 +181,12 @@ const PortfolioModal = (props: PortfolioModalProps): ReactElement => {
               </Link>
             }
           />
+          {portfolio.period && (
+            <SummaryRow name={'개발 기간'} content={portfolio.period} />
+          )}
+          {portfolio.member && (
+            <SummaryRow name={'참여 인원'} content={portfolio.member} />
+          )}
           <SummaryRow name={'주요 기능'} content={portfolio.content} />
         </div>
       </DIV_MainContent>

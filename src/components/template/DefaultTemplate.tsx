@@ -41,7 +41,7 @@ const DIV_Contents = styled.div`
   }
   ${tabletMedia} {
     .content-max {
-      padding: 0 50px;
+      padding: 0 40px;
     }
   }
   ${mobileMedia} {

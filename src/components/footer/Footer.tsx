@@ -1,5 +1,6 @@
 import { Theme } from '@/style/Theme';
 import { HoverDefaultstyle } from '@/style/common.style';
+import { mobileMedia } from '@/style/deviceWidth';
 import { ReactElement } from 'react';
 import styled from 'styled-components';
 import Link from '../common/Link';
@@ -27,6 +28,10 @@ const DIV_Footer = styled.div`
     width: 30px;
     height: 30px;
     ${HoverDefaultstyle}
+  }
+
+  ${mobileMedia} {
+    ${Theme.Typography.caption1};
   }
 `;
 export default Footer;

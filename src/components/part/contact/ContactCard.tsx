@@ -1,7 +1,8 @@
 import Link from '@/components/common/Link';
+import { CopyButton } from '@/components/common/button';
 import { Theme } from '@/style/Theme';
 import { mobileMedia } from '@/style/deviceWidth';
-import { ReactElement } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import styled from 'styled-components';
 
 interface Info {
@@ -12,6 +13,7 @@ interface Info {
 
 interface ContactProps {
   info: Info;
+  handleClickCopy: MouseEventHandler;
 }
 
 const ContactCard = (props: ContactProps): ReactElement => {
@@ -21,7 +23,32 @@ const ContactCard = (props: ContactProps): ReactElement => {
       <div className="info">
         <div className="title">{props.info.name}</div>
         <div className="content">
-          <Link href="tel:010-3914-6562">{props.info.content}</Link>
+          {props.info.name === 'PHONE' ? (
+            <Link
+              href={props.info.name === 'PHONE' ? `tel:010-3914-6562` : `#`}
+            >
+              {props.info.content}
+              <img
+                className="ico-call"
+                src="./images/common/icon-call.svg"
+                alt=""
+              />
+            </Link>
+          ) : (
+            <>
+              {props.info.content}
+              {props.info.name === 'EMAIL' && (
+                <CopyButton value={props.info.content}>
+                  <img
+                    onClick={props.handleClickCopy}
+                    className="ico-copy"
+                    src="./images/common/icon-copy.svg"
+                    alt=""
+                  />
+                </CopyButton>
+              )}
+            </>
+          )}
         </div>
       </div>
     </DIV_ContactCard>
@@ -36,9 +63,7 @@ const DIV_ContactCard = styled.div`
   padding: 40px 8%;
   box-shadow: rgba(149, 160, 165, 0.2) 0px 8px 24px;
   border-radius: 8px;
-
   transition-property: transform, opacity, box-shadow;
-
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   cursor: default;
@@ -61,10 +86,28 @@ const DIV_ContactCard = styled.div`
     }
     .content {
       ${Theme.Typography.subtitle1};
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      a {
+        display: flex;
+        align-items: end;
+        gap: 10px;
+        .ico-call {
+          width: 32px;
+        }
+      }
+      .ico-copy {
+        width: 24px;
+      }
     }
   }
 
   ${mobileMedia} {
+    padding: 10% 8%;
+    .icon {
+      width: 10%;
+    }
     .info {
       .title {
         font-size: 4.5vw;

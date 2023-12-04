@@ -71,7 +71,7 @@ const PortfolioModal = (props: PortfolioModalProps): ReactElement => {
           <div className="item-label-list">
             {(portfolio.labels as string[])?.map?.((label, idx) => (
               <Label
-                key={`label-${idx}`}
+                key={`modal-label-${idx}`}
                 name={label}
                 styles={css`
                   ${Theme.Typography.caption1};

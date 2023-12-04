@@ -1,8 +1,16 @@
+import Toast from '@/components/common/Toast';
+import useToast from '@/hooks/useToast';
 import { contactArray } from '@/model/Contact';
 import { usePagePositionSelector } from '@/store/pagePosition/Selector';
 import { Theme } from '@/style/Theme';
 import { mobileMedia, tabletMedia } from '@/style/deviceWidth';
-import { ReactElement, useEffect, useRef, useState } from 'react';
+import {
+  MouseEventHandler,
+  ReactElement,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useInView } from 'react-intersection-observer';
 import { TypeAnimation } from 'react-type-animation';
 import { styled } from 'styled-components';
@@ -12,6 +20,14 @@ const Contact = (): ReactElement => {
   const pagePosition = usePagePositionSelector();
   const contactRef = useRef<HTMLDivElement | null>(null);
   const [typeStart, setTypeStart] = useState<boolean>(false);
+  const { toastProps, showMessage } = useToast();
+
+  const handleClickCopy: MouseEventHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    showMessage('복사되었습니다!');
+    console.log('c');
+  };
 
   useEffect(() => {
     if (pagePosition === 'contact' && contactRef.current) {
@@ -32,6 +48,8 @@ const Contact = (): ReactElement => {
 
   return (
     <DIV_ContactWrap className="section content-max" ref={contactRef}>
+      <Toast {...toastProps} />
+
       <div className="section-title" ref={ref}>
         Contact !
       </div>
@@ -71,7 +89,11 @@ const Contact = (): ReactElement => {
       </DIV_ContentSection>
       <DIV_CardSection>
         {contactArray.map((info, idx) => (
-          <ContactCard key={idx} info={info} />
+          <ContactCard
+            key={idx}
+            info={info}
+            handleClickCopy={handleClickCopy}
+          />
         ))}
       </DIV_CardSection>
     </DIV_ContactWrap>
@@ -129,6 +151,13 @@ const DIV_ContentSection = styled.div`
 
   ${mobileMedia} {
     padding-bottom: 40px;
+    .question {
+      ${Theme.Typography.h3};
+      word-break: keep-all;
+    }
+    .answer {
+      ${Theme.Typography.subtitle3};
+    }
   }
 `;
 

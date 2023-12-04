@@ -39,86 +39,84 @@ const Portfolio = (): ReactElement => {
       <div className="section-title">포트폴리오</div>
       <DIV_ContentSection className="content-max">
         {portfolioArray.map((item, idx) => (
-          <>
-            <div key={`portfolio-${idx}`} className="portfolio-item">
-              <div className="thumbnail-wrap">
-                <img
-                  className="click-button blink"
-                  src="./images/common/icon-click.svg"
-                  alt=""
-                />
-                <img
-                  src={item.thumbnail}
-                  alt=""
-                  className="thumbnail"
+          <div key={`portfolio-${idx}`} className="portfolio-item">
+            <div className="thumbnail-wrap">
+              <img
+                className="click-button blink"
+                src="./images/common/icon-click.svg"
+                alt=""
+              />
+              <img
+                src={item.thumbnail}
+                alt=""
+                className="thumbnail"
+                onClick={() => setPortfolioModal(item)}
+              />
+            </div>
+            <div className="content">
+              <div className="item-header">
+                <div
                   onClick={() => setPortfolioModal(item)}
-                />
+                  className="item-title"
+                >
+                  {item.title}
+                </div>
+                <div className="item-label-list">
+                  {(item.labels as string[])?.map?.((label, idx) => (
+                    <Label
+                      key={`label-${idx}`}
+                      name={label}
+                      styles={css`
+                        ${Theme.Typography.subtitle3};
+                        ${Theme.Typography.extraBold};
+                        background: ${Object.entries(labelColor).find(
+                          (color) => color[0] === label
+                        )?.[1].background};
+                        color: ${Object.entries(labelColor).find(
+                          (color) => color[0] === label
+                        )?.[1].color};
+                      `}
+                    />
+                  )) || (
+                    <Label
+                      name={item.labels as string}
+                      styles={css`
+                        ${Theme.Typography.subtitle3};
+                        ${Theme.Typography.extraBold};
+                        background: ${Object.entries(labelColor).find(
+                          (color) => color[0] === item.labels
+                        )?.[1].background};
+                        color: ${Object.entries(labelColor).find(
+                          (color) => color[0] === item.labels
+                        )?.[1].color};
+                      `}
+                    />
+                  )}
+                </div>
               </div>
-              <div className="content">
-                <div className="item-header">
-                  <div
-                    onClick={() => setPortfolioModal(item)}
-                    className="item-title"
-                  >
-                    {item.title}
+              <div className="skill-list">
+                {item.frontend && (
+                  <div className="skill-item">
+                    <div className="skill-kind">Frontend: </div>
+                    {item.frontend.join(', ')}
+                    {item.frontend.join(', ')}
                   </div>
-                  <div className="item-label-list">
-                    {(item.labels as string[])?.map?.((label, idx) => (
-                      <Label
-                        key={`label-${idx}`}
-                        name={label}
-                        styles={css`
-                          ${Theme.Typography.subtitle3};
-                          ${Theme.Typography.extraBold};
-                          background: ${Object.entries(labelColor).find(
-                            (color) => color[0] === label
-                          )?.[1].background};
-                          color: ${Object.entries(labelColor).find(
-                            (color) => color[0] === label
-                          )?.[1].color};
-                        `}
-                      />
-                    )) || (
-                      <Label
-                        name={item.labels as string}
-                        styles={css`
-                          ${Theme.Typography.subtitle3};
-                          ${Theme.Typography.extraBold};
-                          background: ${Object.entries(labelColor).find(
-                            (color) => color[0] === item.labels
-                          )?.[1].background};
-                          color: ${Object.entries(labelColor).find(
-                            (color) => color[0] === item.labels
-                          )?.[1].color};
-                        `}
-                      />
-                    )}
-                  </div>
-                </div>
-                <div className="skill-list">
-                  {item.frontend && (
-                    <div className="skill-item">
-                      <div className="skill-kind">Frontend: </div>
-                      {item.frontend.join(', ')}
-                      {item.frontend.join(', ')}
-                    </div>
-                  )}
-                  {item.backend && (
-                    <div className="skill-item">
-                      <div className="skill-kind">Backend: </div>
-                      {item.backend.join(', ')}
-                    </div>
-                  )}
-                </div>
-                {item.func && (
-                  <div className="func">
-                    <b>주요 기능: </b>
-                    {item.func}
+                )}
+                {item.backend && (
+                  <div className="skill-item">
+                    <div className="skill-kind">Backend: </div>
+                    {item.backend.join(', ')}
                   </div>
                 )}
               </div>
+              {item.func && (
+                <div className="func">
+                  <b>주요 기능: </b>
+                  {item.func}
+                </div>
+              )}
             </div>
-          </>
+          </div>
         ))}
       </DIV_ContentSection>
       {portfolioModal?.kind === 'portfolio' && (
@@ -132,6 +130,7 @@ const Portfolio = (): ReactElement => {
 };
 const DIV_PortfolioWrap = styled.div`
   background: linear-gradient(0deg, #ffffff 0%, #fef5e7 60%, #fdebd0 100%);
+  padding-bottom: 0 !important;
 `;
 
 const DIV_ContentSection = styled.div`

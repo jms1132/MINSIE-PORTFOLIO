@@ -127,7 +127,7 @@ const DIV_ContentSection = styled.div`
   }
   .answer {
     ${Theme.Typography.regular};
-    ${Theme.Typography.subtitle2};
+    ${Theme.Typography.subtitle1};
     word-break: keep-all;
   }
 

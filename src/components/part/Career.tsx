@@ -188,7 +188,9 @@ const DIV_ContentSection = styled.div`
             gap: 5px;
           }
         }
-
+        p {
+          margin: 0;
+        }
         p,
         li {
           font-family: 'GmarketSansLight';

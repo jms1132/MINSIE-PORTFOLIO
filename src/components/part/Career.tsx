@@ -223,16 +223,23 @@ const DIV_ContentSection = styled.div`
 
   ${mobileMedia} {
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 
     .icon-wrap {
-      margin: 0 auto;
+      width: 100%;
       flex-direction: row;
       align-items: center;
-      justify-self: center;
+      justify-content: space-between;
+      gap: initial;
+      > a {
+        width: 30%;
+        img {
+          width: 60%;
+        }
+      }
     }
     .content {
-      padding: 20px 0;
+      padding: 0;
       border: none;
       .loud,
       .notefolio {

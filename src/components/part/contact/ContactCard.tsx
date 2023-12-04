@@ -1,6 +1,7 @@
 import Link from '@/components/common/Link';
 import { CopyButton } from '@/components/common/button';
 import { Theme } from '@/style/Theme';
+import { HoverDefaultstyle } from '@/style/common.style';
 import { mobileMedia } from '@/style/deviceWidth';
 import { MouseEventHandler, ReactElement } from 'react';
 import styled from 'styled-components';
@@ -95,10 +96,13 @@ const DIV_ContactCard = styled.div`
         gap: 10px;
         .ico-call {
           width: 32px;
+          ${HoverDefaultstyle}
         }
       }
       .ico-copy {
         width: 24px;
+        cursor: pointer;
+        ${HoverDefaultstyle}
       }
     }
   }

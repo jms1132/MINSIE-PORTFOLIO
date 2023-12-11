@@ -144,7 +144,8 @@ const DIV_Toolbar = styled.div`
         > * {
           font-size: 18px;
 
-          &:nth-child(n + 4) {
+          &:nth-child(3),
+          &:nth-child(5) {
             ${Theme.Typography.extraBold};
           }
           &:hover {

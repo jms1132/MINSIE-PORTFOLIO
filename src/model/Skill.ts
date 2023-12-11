@@ -45,7 +45,7 @@ export const frontendSkillArray = [
     name: 'REDUX',
     icon: './images/skill/redux-logo.png',
     level: 60,
-    text: '효율적인 컴포넌트 상태관리에 익숙하며 Redux-Saga, Redux-Thnk와 같은 미들웨어를 사용해 보았습니다. Redux-Persist를 이용해 redux store를 관리하였습니다.',
+    text: '효율적인 컴포넌트 상태관리에 익숙하며 Redux-Saga, Redux-Thunk와 같은 미들웨어를 사용해 보았습니다. Redux-Persist를 이용해 redux store를 관리하였습니다.',
   },
   {
     name: 'TYPESCRIPT',

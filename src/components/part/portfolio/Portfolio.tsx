@@ -13,9 +13,13 @@ const labelColor = {
     background: '#ebdef0',
     color: '#884ea0',
   },
-  Mobile: {
+  Tablet: {
     background: '#d1f2eb',
     color: '#148f77',
+  },
+  Mobile: {
+    background: '#FADBD8',
+    color: '#E74C3C',
   },
 };
 

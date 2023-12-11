@@ -25,7 +25,7 @@ export const portfolioArray: portfolio[] = [
     thumbnail: './images/portfolio/portfolioSite/img-project-portfolio.png',
     video: './images/portfolio/portfolioSite/video-project-portfolio.mov',
     kind: 'portfolio',
-    labels: ['Web', 'Mobile'],
+    labels: ['Web', 'Tablet', 'Mobile'],
     tools: 'Visudal Studio Code',
     frontend: ['React', 'Redux', 'TypeScript', 'Styled-Components', 'etc'],
     summary: '',

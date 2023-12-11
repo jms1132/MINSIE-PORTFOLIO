@@ -110,12 +110,7 @@ export const etcSkillArray = [
     level: 50,
     text: '진행 중이었던 프로젝트를 react 라이브러리를 이용해 새롭게 마이그레이션하기 전, php 언어를 이용하여 직접 백엔드 개발을 진행하였습니다.',
   },
-  {
-    name: 'SQL',
-    icon: './images/skill/sql-logo.svg',
-    level: 70,
-    text: '데이터베이스 구조와 sql 문법에 대해 이해하고 있으며 query문을 통해 데이터베이스 및 테이블 관리에 익숙합니다. 기본적인 SELECT, INSERT, UPDATE, DELETE문을 포함해 데이터 조회를 위한 JOIN문이나 다양한 필터들을 구현하여 데이터를 다룰수 있습니다.',
-  },
+
   {
     name: 'DOCKER',
     icon: './images/skill/docker-logo.png',
@@ -145,5 +140,11 @@ export const etcSkillArray = [
     icon: './images/skill/launchdarkly-logo.png',
     level: 50,
     text: '기능 플래그를 이용하여 코드 배포에서 기능 롤아웃을 분리하였고 개발 중인 서비스에 대한 대상 타겟을 옵션으로 설정하여 배포 이후의 상황을 개발망에서 미리 테스트 해보았습니다.',
+  },
+  {
+    name: 'SQL',
+    icon: './images/skill/sql-logo.svg',
+    level: 70,
+    text: '데이터베이스 구조와 sql 문법에 대해 이해하고 있으며 query문을 통해 데이터베이스 및 테이블 관리에 익숙합니다. 기본적인 SELECT, INSERT, UPDATE, DELETE문을 포함해 데이터 조회를 위한 JOIN문이나 다양한 필터들을 구현하여 데이터를 다룰수 있습니다.',
   },
 ];

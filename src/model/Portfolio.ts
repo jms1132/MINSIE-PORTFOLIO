@@ -11,12 +11,11 @@ export interface portfolio {
   tools: OrArray<string>;
   frontend: string[];
   backend?: string[];
-  summary: string;
   period?: string;
   member?: string;
   github: string;
   content: string;
-  func: string;
+  func?: string;
 }
 export const portfolioArray: portfolio[] = [
   {
@@ -28,12 +27,10 @@ export const portfolioArray: portfolio[] = [
     labels: ['Web', 'Tablet', 'Mobile'],
     tools: 'Visudal Studio Code',
     frontend: ['React', 'Redux', 'TypeScript', 'Styled-Components', 'etc'],
-    summary: '',
     member: '1명',
     github: 'https://github.com/jms1132/MINSIE-PORTFOLIO',
     content:
       '포트폴리오 용도로 제작한 웹사이트입니다. 지금 보고 있는 바로 이 웹사이트에 해당합니다.<br/><br/>React.js를 사용하여 모든 컴포넌트들을 재사용성이 가능하게끔 설계 및 개발 하였으며 Typescript를 사용하여 컴파일 단계에서의 안정성을 향상 시켰습니다. 메뉴 클릭과 관련된 이동을 위해 react-redux를 사용하게 되었습니다.<br/>PC, Tablet, Mobile 3가지 기종에 따른 반응형 사이트로 제작하였습니다. ',
-    func: '',
   },
   {
     title: '찾아zoo',
@@ -67,7 +64,6 @@ export const portfolioArray: portfolio[] = [
     tools: ['Atom', 'MySQL', 'Sourcetree'],
     frontend: ['HTML5', 'CSS3', 'Javascript'],
     backend: ['PHP7'],
-    summary: '',
     period: '2020/2/10 ~ 2020/2/28',
     member: '5명',
     github: 'https://github.com/jms1132/WebProject',

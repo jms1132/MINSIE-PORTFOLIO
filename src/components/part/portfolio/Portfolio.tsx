@@ -103,7 +103,6 @@ const Portfolio = (): ReactElement => {
                   <div className="skill-item">
                     <div className="skill-kind">Frontend: </div>
                     {item.frontend.join(', ')}
-                    {item.frontend.join(', ')}
                   </div>
                 )}
                 {item.backend && (
